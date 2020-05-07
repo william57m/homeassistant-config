@@ -1,0 +1,31 @@
+- platform: ping
+  name: MBP William Network
+  host: 192.168.2.102
+  count: 2
+  scan_interval: 30
+
+- platform: command_line
+  name: MBP William Status
+  device_class: lock
+  command: ssh mbpwill 'sh .homeassistant/status.sh'
+  scan_interval: 30
+  payload_on: 'Unlocked'
+  payload_off: 'Locked'
+
+- platform: template
+  sensors:
+    occupancy:
+      friendly_name: Occupancy
+      device_class: presence
+      value_template: >-
+        {% if states.sensor.home_occupancy_confidence.state > '10' %}
+          true
+        {% else %}
+          false
+        {% endif %}
+      icon_template: >-
+        {% if states.sensor.home_occupancy_confidence.state > '10' %}
+          mdi:home-account
+        {% else %}
+          mdi:home-export-outline
+        {% endif %}

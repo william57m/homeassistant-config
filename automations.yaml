@@ -1,0 +1,57 @@
+- id: '1588533648578'
+  alias: Notification lorsque la porte d'entrée s'ouvre
+  description: ''
+  trigger:
+  - device_id: cb834a7d240848d8a22d634f370ddc08
+    domain: binary_sensor
+    entity_id: binary_sensor.porte_entre_contact
+    platform: device
+    type: opened
+  condition:
+  - condition: state
+    entity_id: binary_sensor.occupancy
+    state: 'off'
+  action:
+  - data: {}
+    service: shell_command.porte_entree_ouverte
+- id: '1588553279361'
+  alias: Notification lorsque la porte du balcon s'ouvre
+  description: ''
+  trigger:
+  - device_id: 7ba2a5d9bee8499180cf9abe0161e8c1
+    domain: binary_sensor
+    entity_id: binary_sensor.porte_balcon_contact
+    platform: device
+    type: opened
+  condition:
+  - condition: state
+    entity_id: binary_sensor.occupancy
+    state: 'off'
+  action:
+  - data:
+      message: Porte balcon ouverte
+    service: notify.telegram
+- id: '1588612500729'
+  alias: Allume les lumières automatiquement en rentrant le soir
+  description: ''
+  trigger:
+  - device_id: cb834a7d240848d8a22d634f370ddc08
+    domain: binary_sensor
+    entity_id: binary_sensor.porte_entre_contact
+    platform: device
+    type: opened
+  condition:
+  - condition: and
+    conditions:
+    - after: '19:00:00'
+      before: '4:00:00'
+      condition: time
+    - condition: state
+      entity_id: binary_sensor.occupancy
+      state: 'off'
+  action:
+  - brightness_pct: 100
+    device_id: 486d6ad978584ce39674ee4760664c91
+    domain: light
+    entity_id: light.lampadaire
+    type: turn_on

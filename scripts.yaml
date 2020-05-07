@@ -1,0 +1,5 @@
+'lock_mbp_william':
+  alias: Lock MBP William
+  sequence:
+  - data: {}
+    service: shell_command.sleep_mac

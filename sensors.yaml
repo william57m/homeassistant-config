@@ -1,0 +1,35 @@
+- platform: systemmonitor
+  resources:
+    - type: disk_use
+      arg: /home
+    - type: disk_free
+      arg: /home
+    - type: memory_free
+    - type: memory_use
+    - type: processor_use
+    - type: last_boot
+
+- platform: qnap
+  host: 192.168.2.112
+  username: !secret qnap_user
+  password: !secret qnap_password
+  monitored_conditions:
+    - status
+    - system_temp
+    - cpu_usage
+    - memory_free
+    - memory_used
+    - volume_size_used
+    - volume_size_free
+
+- platform: mqtt
+  name: iPhone de William occupancy confidence
+  state_topic: 'monitor/raspberrypi/iphone_de_william'
+  value_template: '{{ value_json.confidence }}'
+
+- platform: min_max
+  name: Home occupancy confidence
+  type: max
+  round_digits: 0
+  entity_ids:
+    - sensor.iphone_de_william_occupancy_confidence

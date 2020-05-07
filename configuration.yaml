@@ -1,0 +1,78 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Themes
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Scripts
+shell_command:
+  porte_entree_ouverte: python3 /home/homeassistant/.homeassistant/python_scripts/porte_entree_ouverte.py
+  sleep_mac: python3 /home/homeassistant/.homeassistant/python_scripts/sleep_mac.py
+  monitor: ''
+
+# History view
+history:
+  exclude:
+    entities:
+      - binary_sensor.updater
+      - sensor.last_boot
+      - sun.sun
+    domains:
+      - automation
+      - script
+
+# Withings
+withings:
+  client_id: !secret withings_client_id
+  client_secret: !secret withings_client_secret
+  profiles:
+    - William Mura
+
+# Telegram Settings
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_chat_id
+
+# Notification services
+notify:
+  - name: TELEGRAM
+    platform: telegram
+    chat_id: !secret telegram_chat_id
+
+# Homekit
+homekit:
+  filter:
+    include_entities:
+      - light.lampadaire
+      - light.lampe_william
+      - light.lampe_chevet
+      - climate.thermostat_salon_climate
+      - binary_sensor.porte_entre_contact
+      - binary_sensor.porte_balcon_contact
+      - device_tracker.iphone_de_william
+
+# Camera
+camera:
+  - platform: foscam
+    name: Foscam C1
+    ip: 192.168.2.118
+    port: 88
+    username: !secret foscam_user
+    password: !secret foscam_password
+
+# MQTT
+mqtt:
+  broker: localhost
+  discovery: true
+  discovery_prefix: homeassistant
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include sensors.yaml
+binary_sensor: !include binary_sensors.yaml
