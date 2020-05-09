@@ -11,21 +11,3 @@
   scan_interval: 30
   payload_on: 'Unlocked'
   payload_off: 'Locked'
-
-- platform: template
-  sensors:
-    occupancy:
-      friendly_name: Occupancy
-      device_class: presence
-      value_template: >-
-        {% if states.sensor.home_occupancy_confidence.state > '10' %}
-          true
-        {% else %}
-          false
-        {% endif %}
-      icon_template: >-
-        {% if states.sensor.home_occupancy_confidence.state > '10' %}
-          mdi:home-account
-        {% else %}
-          mdi:home-export-outline
-        {% endif %}

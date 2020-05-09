@@ -6,11 +6,28 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
+# Alarm
+alarm_control_panel:
+  - platform: manual
+    name: Alarme
+    disarmed:
+      trigger_time: 0
+      delay_time: 0
+    armed_away:
+      pending_time: 0
+      delay_time: 0
+
+# Occupancy status
+input_boolean:
+  occupancy:
+    name: Occupancy
+    icon: mdi:home-account
+    initial: false
+
 # Scripts
 shell_command:
   porte_entree_ouverte: python3 /home/homeassistant/.homeassistant/python_scripts/porte_entree_ouverte.py
   sleep_mac: python3 /home/homeassistant/.homeassistant/python_scripts/sleep_mac.py
-  monitor: ''
 
 # History view
 history:

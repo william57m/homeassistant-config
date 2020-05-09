@@ -1,5 +1,5 @@
 - id: '1588533648578'
-  alias: Notification lorsque la porte d'entrée s'ouvre
+  alias: '[Away] Notification lorsque la porte d''entrée s''ouvre'
   description: ''
   trigger:
   - device_id: cb834a7d240848d8a22d634f370ddc08
@@ -9,13 +9,13 @@
     type: opened
   condition:
   - condition: state
-    entity_id: binary_sensor.occupancy
-    state: 'off'
+    entity_id: alarm_control_panel.alarme
+    state: armed_away
   action:
   - data: {}
     service: shell_command.porte_entree_ouverte
 - id: '1588553279361'
-  alias: Notification lorsque la porte du balcon s'ouvre
+  alias: '[Away] Notification lorsque la porte du balcon s''ouvre'
   description: ''
   trigger:
   - device_id: 7ba2a5d9bee8499180cf9abe0161e8c1
@@ -25,14 +25,14 @@
     type: opened
   condition:
   - condition: state
-    entity_id: binary_sensor.occupancy
-    state: 'off'
+    entity_id: alarm_control_panel.alarme
+    state: armed_away
   action:
   - data:
       message: Porte balcon ouverte
     service: notify.telegram
 - id: '1588612500729'
-  alias: Allume les lumières automatiquement en rentrant le soir
+  alias: '[Away] Lumières en rentrant le soir'
   description: ''
   trigger:
   - device_id: cb834a7d240848d8a22d634f370ddc08
@@ -43,7 +43,7 @@
   condition:
   - condition: and
     conditions:
-    - after: '19:00:00'
+    - after: '20:00:00'
       before: '4:00:00'
       condition: time
     - condition: state
@@ -55,3 +55,80 @@
     domain: light
     entity_id: light.lampadaire
     type: turn_on
+- id: '1588894249532'
+  alias: Monitor scan for departure
+  description: ''
+  trigger:
+  - device_id: cb834a7d240848d8a22d634f370ddc08
+    domain: binary_sensor
+    entity_id: binary_sensor.porte_entre_contact
+    platform: device
+    type: not_opened
+  condition:
+  - condition: state
+    entity_id: input_boolean.occupancy
+    state: 'on'
+  action:
+  - data:
+      topic: monitor/scan/depart
+    service: mqtt.publish
+- id: '1588894714461'
+  alias: Monitor scan for arrival
+  description: ''
+  trigger:
+  - device_id: cb834a7d240848d8a22d634f370ddc08
+    domain: binary_sensor
+    entity_id: binary_sensor.porte_entre_contact
+    platform: device
+    type: opened
+  condition:
+  - condition: state
+    entity_id: input_boolean.occupancy
+    state: 'off'
+  action:
+  - data:
+      topic: monitor/scan/arrive
+    service: mqtt.publish
+- id: 0bbfa6dff2da4aa4a5745dfe5391e234
+  alias: Occupancy On
+  trigger:
+  - above: '10'
+    entity_id: sensor.home_occupancy_confidence
+    platform: numeric_state
+  action:
+  - data:
+      entity_id: input_boolean.occupancy
+    service: input_boolean.turn_on
+  - data: {}
+    entity_id: alarm_control_panel.alarme
+    service: alarm_control_panel.alarm_disarm
+  hide_entity: true
+- id: 871af6931a384acdbd14983237d19dcf
+  alias: Occupancy Off
+  trigger:
+  - below: '10'
+    entity_id: sensor.home_occupancy_confidence
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: input_boolean.occupancy
+    state: 'on'
+  action:
+  - data:
+      entity_id: input_boolean.occupancy
+    service: input_boolean.turn_off
+  - data: {}
+    entity_id: alarm_control_panel.alarme
+    service: alarm_control_panel.alarm_arm_away
+  hide_entity: true
+- id: '1588902472098'
+  alias: Monitor scan on start
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      topic: monitor/scan/restart
+    service: mqtt.publish

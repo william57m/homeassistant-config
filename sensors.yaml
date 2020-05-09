@@ -24,6 +24,7 @@
 
 - platform: mqtt
   name: iPhone de William occupancy confidence
+  icon: mdi:cellphone-iphone
   state_topic: 'monitor/raspberrypi/iphone_de_william'
   value_template: '{{ value_json.confidence }}'
 
