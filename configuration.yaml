@@ -16,6 +16,9 @@ alarm_control_panel:
     armed_away:
       pending_time: 0
       delay_time: 0
+    armed_night:
+      pending_time: 0
+      delay_time: 0
 
 # Occupancy status
 input_boolean:
@@ -26,8 +29,8 @@ input_boolean:
 
 # Scripts
 shell_command:
-  porte_entree_ouverte: python3 /home/homeassistant/.homeassistant/python_scripts/porte_entree_ouverte.py
-  sleep_mac: python3 /home/homeassistant/.homeassistant/python_scripts/sleep_mac.py
+  send_camera_snapshot_sejour: python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_snapshot_sejour.py
+  send_sleep_command_mac: python3 /home/homeassistant/.homeassistant/python_scripts/send_sleep_command_mac.py
 
 # History view
 history:
