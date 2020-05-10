@@ -6,19 +6,18 @@ secret_file = open('/home/homeassistant/.homeassistant/secrets.yaml', 'r')
 secrets = yaml.load(secret_file, Loader=yaml.FullLoader)
 
 # Bot informations
-apiKey = secrets['telegram_api_key']
-chatId = secrets['telegram_chat_id']
+api_key = secrets['telegram_api_key']
+chat_id = secrets['telegram_chat_id']
 
 # Foscam informations
-foscamUsername = secrets['foscam_user']
-foscamPassword = secrets['foscam_password']
-foscamIp = '192.168.2.118'
-foscamPort = '88'
-foscamSnapshotUrl = f'http://{foscamIp}:{foscamPort}/cgi-bin/CGIProxy.fcgi\\?cmd\\=snapPicture2\\&usr\\={foscamUsername}\\&pwd\\={foscamPassword}'
+foscam_username = secrets['foscam_user']
+foscam_password = secrets['foscam_password']
+foscam_ip = '192.168.2.118'
+foscam_port = '88'
+foscam_snapshot_url = f'http://{foscam_ip}:{foscam_port}/cgi-bin/CGIProxy.fcgi\\?cmd\\=snapPicture2\\&usr\\={foscam_username}\\&pwd\\={foscam_password}'
 
 # Get snapshot
-os.system(f'curl {foscamSnapshotUrl} -o /home/homeassistant/.homeassistant/tmp/snapshot.jpg')
+os.system(f'curl {foscam_snapshot_url} -o /home/homeassistant/.homeassistant/tmp/snapshot.jpg')
 
 # Send photo
-os.system(f'curl -s -X POST "https://api.telegram.org/bot{apiKey}/sendPhoto" -F chat_id={chatId} -F photo="@/home/homeassistant/.homeassistant/tmp/snapshot.jpg" ')
-
+os.system(f'curl -s -X POST "https://api.telegram.org/bot{api_key}/sendPhoto" -F chat_id={chat_id} -F photo="@/home/homeassistant/.homeassistant/tmp/snapshot.jpg" ')
