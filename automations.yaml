@@ -20,12 +20,8 @@
   - data:
       message: Porte entrée ouverte
     service: notify.telegram
-  - delay: '1'
   - data: {}
-    service: shell_command.send_camera_snapshot_sejour
-  - delay: '1'
-  - data: {}
-    service: shell_command.send_camera_snapshot_sejour
+    service: shell_command.send_camera_group_snapshot_sejour
 - id: '1588553279361'
   alias: '[Notification] Porte balcon ouverte'
   description: ''
