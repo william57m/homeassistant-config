@@ -1,0 +1,9 @@
+  - platform: command_line
+    switches:
+      foscam_motion_sejour:
+        command_on: "python3 /home/homeassistant/.homeassistant/python_scripts/set_motion_sensor_camera_sejour.py '1'"
+        command_off: "python3 /home/homeassistant/.homeassistant/python_scripts/set_motion_sensor_camera_sejour.py '0'"
+        command_state: "python3 /home/homeassistant/.homeassistant/python_scripts/get_motion_sensor_state_camera_sejour.py"
+        value_template: '{{ value == "1" }}'
+        friendly_name: Motion sensor camera séjour
+        icon: mdi:motion-sensor
