@@ -5,7 +5,7 @@ import xmltodict
 def set_motion_sensor(ip, port, user, password, state=1):
   '''
   Enable/Disable motion sensor
-    :param state: 0 to disable, 1 to enable
+    :param state: 0 Disabled, 1 No Alarm, 2 Detect Alarm
   '''
   requests.get(f'http://{ip}:{port}/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable={state}&usr={user}&pwd={password}')
 
