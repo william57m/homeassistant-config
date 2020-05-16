@@ -1,8 +1,14 @@
+'''
+Send snapshot via telegram for the given camera
+
+python3 send_camera_snapshot.py CAMERA_NAME
+'''
+
 import sys
 from helpers.foscam_utility import download_snapshot
 from helpers.telegram_utility import send_photo
 from helpers.utilities import get_secrets
-from helpers.config import CAMERAS, SNAPSHOTS_PATH
+from helpers.config import SNAPSHOTS_PATH
 
 
 # Get secrets
@@ -18,8 +24,8 @@ chat_id = secrets['telegram_chat_id']
 # Foscam informations
 foscam_username = secrets['foscam_user']
 foscam_password = secrets['foscam_password']
-foscam_ip = CAMERAS[camera_name]['ip']
-foscam_port = CAMERAS[camera_name]['port']
+foscam_ip = secrets[f'foscam_{camera_name}_ip']
+foscam_port = secrets[f'foscam_{camera_name}_port']
 
 # Download photo
 snapshot_path = f'{SNAPSHOTS_PATH}/snapshot.jpg'
