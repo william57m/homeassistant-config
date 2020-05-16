@@ -9,6 +9,7 @@
 !*.png
 !*.py
 !python_scripts
+!python_scripts/helpers
 !www
 
 # Ignore folders.
