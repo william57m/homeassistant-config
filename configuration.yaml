@@ -98,3 +98,6 @@ scene: !include scenes.yaml
 sensor: !include sensors.yaml
 binary_sensor: !include binary_sensors.yaml
 switch: !include switches.yaml
+
+homeassistant:
+  customize: !include customize.yaml
