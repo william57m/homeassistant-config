@@ -11,6 +11,7 @@
 !python_scripts
 !python_scripts/helpers
 !www
+!requirements.txt
 
 # Ignore folders.
 .storage
