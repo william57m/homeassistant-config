@@ -5,9 +5,17 @@ import xmltodict
 def set_motion_sensor(ip, port, user, password, state=1):
   '''
   Enable/Disable motion sensor
+  Docs: https://www.camarasip.es/descarga/IP_Camera_CGI_(SDK).pdf
     :param state: 0 disabled, 1 enabled
   '''
-  requests.get(f'http://{ip}:{port}/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable={state}&usr={user}&pwd={password}')
+
+  # Params
+  linkage = 8
+  schedule = 'schedule0=281474976710655&schedule1=281474976710655&schedule2=281474976710655&schedule3=281474976710655&schedule4=281474976710655&schedule5=281474976710655&schedule6=281474976710655'
+  area = 'area0=1023&area1=1023&area2=1023&area3=1023&area4=1023&area5=1023&area6=1023&area7=1023&area8=1023&area9=1023'
+
+  # Call
+  requests.get(f'http://{ip}:{port}/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable={state}&usr={user}&pwd={password}&linkage={linkage}&schedule={schedule}&area={area}')
 
 
 def get_motion_sensor_state(ip, port, user, password):
