@@ -147,3 +147,30 @@
   - data:
       topic: monitor/scan/restart
     service: mqtt.publish
+- id: '1589722828341'
+  alias: '[Notification] Sortir poubelles'
+  description: ''
+  trigger:
+  - at: '20:00'
+    platform: time
+  condition:
+  - condition: time
+    weekday:
+    - tue
+  action:
+  - data:
+      message: N'oubliez pas de sortir les poubelles avant demain matin 8h00
+    service: notify.telegram
+- id: '1590177999538'
+  alias: '[Notification] Mouvement camera sejour'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.camera_sejour_motion
+    from: 'False'
+    platform: state
+    to: 'True'
+  condition: []
+  action:
+  - data:
+      message: Mouvement dans le sejour
+    service: notify.telegram

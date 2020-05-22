@@ -78,7 +78,6 @@ homekit:
       - climate.thermostat_salon_climate
       - binary_sensor.porte_entree_contact
       - binary_sensor.porte_balcon_contact
-      - device_tracker.iphone_de_william
 
 # Camera
 camera:

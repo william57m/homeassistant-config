@@ -11,3 +11,10 @@
   scan_interval: 30
   payload_on: 'Unlocked'
   payload_off: 'Locked'
+
+- platform: command_line
+  name: Camera sejour Motion
+  device_class: motion
+  command: "python3 /home/homeassistant/.homeassistant/python_scripts/foscam_command.py sejour getMotionAlert"
+  value_template: '{{ value == "2" }}'
+  scan_interval: 2
