@@ -21,14 +21,14 @@ def get_motion_sensor_state(ip, port, user, password):
   print(result)
 
 
-def get_motion_status(ip, port, user, password):
+def get_motion_alert(ip, port, user, password):
   '''
   Get motion status
     :return: 0 Disabled, 1 No Alarm, 2 Detect Alarm
   '''
-  response = requests.get(f'http://{ip}:{port}/cgi-bin/CGIProxy.fcgi?cmd=getMotionDetectConfig&usr={user}&pwd={password}')
+  response = requests.get(f'http://{ip}:{port}/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr={user}&pwd={password}')
   doc = xmltodict.parse(response.content)
-  result = doc['CGI_Result']['isEnable'][0]
+  result = doc['CGI_Result']['motionDetectAlarm'][0]
   print(result)
 
 
@@ -46,8 +46,8 @@ def process_command(cmd, ip, port, user, password, options):
   '''
   Process command
   '''
-  if cmd == 'getMotionStatus':
-    get_motion_status(ip, port, user, password)
+  if cmd == 'getMotionAlert':
+    get_motion_alert(ip, port, user, password)
   elif cmd == 'getMotionSensor':
     get_motion_sensor_state(ip, port, user, password)
   elif cmd == 'setMotionSensor':
