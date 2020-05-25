@@ -1,11 +1,11 @@
 - platform: ping
-  name: MBP William Network
+  name: mbp_william_network
   host: 192.168.2.102
   count: 2
   scan_interval: 30
 
 - platform: command_line
-  name: MBP William Status
+  name: mbp_william_status
   device_class: lock
   command: ssh mbpwill 'sh .homeassistant/status.sh'
   scan_interval: 30
@@ -13,7 +13,7 @@
   payload_off: 'Locked'
 
 - platform: command_line
-  name: Camera sejour Motion
+  name: foscam_sejour_motion_sensor
   device_class: motion
   command: "python3 /home/homeassistant/.homeassistant/python_scripts/foscam_command.py sejour getMotionAlert"
   value_template: '{{ value == "2" }}'

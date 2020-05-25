@@ -1,6 +1,6 @@
 - platform: command_line
   switches:
-    foscam_motion_sejour:
+    foscam_sejour_motion_sensor:
       command_on: "python3 /home/homeassistant/.homeassistant/python_scripts/foscam_command.py sejour setMotionSensor '1'"
       command_off: "python3 /home/homeassistant/.homeassistant/python_scripts/foscam_command.py sejour setMotionSensor '0'"
       command_state: "python3 /home/homeassistant/.homeassistant/python_scripts/foscam_command.py sejour getMotionSensor"

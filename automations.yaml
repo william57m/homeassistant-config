@@ -117,6 +117,9 @@
   - data: {}
     entity_id: alarm_control_panel.alarme
     service: alarm_control_panel.alarm_disarm
+  - data: {}
+    entity_id: switch.foscam_motion_sejour
+    service: switch.turn_off
   hide_entity: true
 - id: 871af6931a384acdbd14983237d19dcf
   alias: '[Set] Occupancy off'
@@ -132,9 +135,6 @@
   - data:
       entity_id: input_boolean.occupancy
     service: input_boolean.turn_off
-  - data: {}
-    entity_id: alarm_control_panel.alarme
-    service: alarm_control_panel.alarm_arm_away
   hide_entity: true
 - id: '1588902472098'
   alias: '[Scan présence] Initialisation'
@@ -174,3 +174,99 @@
   - data:
       message: Mouvement dans le sejour
     service: notify.telegram
+- id: '1590284669925'
+  alias: '[Notification] When alarm is armed in away mode'
+  description: ''
+  trigger:
+  - entity_id: alarm_control_panel.alarme
+    platform: state
+    to: armed_away
+  condition: []
+  action:
+  - data:
+      message: Alarme activé (Mode absent)
+    service: notify.telegram
+- id: '1590285643911'
+  alias: '[Notification] When alarm is armed in night mode'
+  description: ''
+  trigger:
+  - entity_id: alarm_control_panel.alarme
+    platform: state
+    to: armed_night
+  condition: []
+  action:
+  - data:
+      message: Alarme activé (Mode nuit)
+    service: notify.telegram
+- id: '1590285699676'
+  alias: '[Notification] When alarm is disabled'
+  description: ''
+  trigger:
+  - entity_id: alarm_control_panel.alarme
+    platform: state
+    to: disarmed
+  condition: []
+  action:
+  - data:
+      message: Alarme désactivé
+    service: notify.telegram
+- id: '1590285700368'
+  alias: '[Notification] When alarm is disabled'
+  description: ''
+  trigger:
+  - entity_id: alarm_control_panel.alarme
+    platform: state
+    to: disabled
+  condition: []
+  action:
+  - data:
+      message: Alarme désactivé
+    service: notify.telegram
+- id: '1590371260631'
+  alias: Turn off alarm on occupancy on
+  description: ''
+  trigger:
+  - entity_id: input_boolean.occupancy
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    entity_id: alarm_control_panel.alarme
+    service: alarm_control_panel.alarm_disarm
+- id: '1590371502482'
+  alias: Enable sensors
+  description: ''
+  trigger:
+  - entity_id: alarm_control_panel.alarme
+    platform: state
+    to: armed_away
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.foscam_sejour_motion_sensor
+    service: switch.turn_on
+- id: '1590371659035'
+  alias: Disable sensors
+  description: ''
+  trigger:
+  - entity_id: alarm_control_panel.alarme
+    platform: state
+    to: disarmed
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.foscam_sejour_motion_sensor
+    service: switch.turn_off
+- id: '1590371910210'
+  alias: Turn on alarm on occupancy off
+  description: ''
+  trigger:
+  - entity_id: input_boolean.occupancy
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data: {}
+    entity_id: alarm_control_panel.alarme
+    service: alarm_control_panel.alarm_arm_away
