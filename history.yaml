@@ -1,0 +1,8 @@
+exclude:
+  domains:
+    - automation
+    - script
+    - sun
+  entities:
+    - binary_sensor.updater
+    - sensor.last_boot

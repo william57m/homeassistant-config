@@ -1,7 +1,3 @@
-switch.camera_sejour_motion_sensor:
-  friendly_name: Foscam séjour motion sensor toggle
-  icon: mdi:motion-sensor
-
 binary_sensor.mbp_william_network:
   friendly_name: MBP William network
 
@@ -10,3 +6,15 @@ binary_sensor.mbp_william_status:
 
 binary_sensor.camera_sejour_motion_sensor:
   friendly_name: Foscam séjour motion sensor
+
+sensor.iphone_de_william_occupancy_confidence:
+  friendly_name: iPhone de William (Occupancy confidence)
+  icon: mdi:cellphone-iphone
+
+sensor.home_occupancy_confidence:
+  friendly_name: Home occupancy confidence
+  icon: mdi:home-account
+
+switch.camera_sejour_motion_sensor:
+  friendly_name: Foscam séjour motion sensor toggle
+  icon: mdi:motion-sensor

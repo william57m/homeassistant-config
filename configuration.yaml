@@ -2,7 +2,7 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-  # Home assistant
+# Home assistant
 homeassistant:
   customize: !include customize.yaml
 
@@ -24,29 +24,11 @@ alarm_control_panel:
       pending_time: 0
       delay_time: 0
 
-# Occupancy status
-input_boolean:
-  occupancy:
-    name: Occupancy
-    icon: mdi:home-account
-    initial: false
-
 # Scripts
 shell_command:
   send_camera_snapshots: python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_snapshots.py {{camera_name}}
   send_camera_snapshot: python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_snapshot.py {{camera_name}}
   send_sleep_command_mac: python3 /home/homeassistant/.homeassistant/python_scripts/send_sleep_command_mac.py
-
-# History view
-history:
-  exclude:
-    entities:
-      - binary_sensor.updater
-      - sensor.last_boot
-      - sun.sun
-    domains:
-      - automation
-      - script
 
 # Withings
 withings:
@@ -64,29 +46,9 @@ telegram_bot:
 
 # Notification services
 notify:
-  - name: TELEGRAM
+  - name: telegram
     platform: telegram
     chat_id: !secret telegram_chat_id
-
-# Homekit
-homekit:
-  filter:
-    include_entities:
-      - light.lampadaire
-      - light.lampe_william
-      - light.lampe_chevet
-      - climate.thermostat_salon_climate
-      - binary_sensor.porte_entree_contact
-      - binary_sensor.porte_balcon_contact
-
-# Camera
-camera:
-  - platform: foscam
-    name: camera_sejour
-    ip: 192.168.2.118
-    port: 88
-    username: !secret foscam_user
-    password: !secret foscam_password
 
 # MQTT
 mqtt:
@@ -94,10 +56,15 @@ mqtt:
   discovery: true
   discovery_prefix: homeassistant
 
-group: !include groups.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
-sensor: !include sensors.yaml
 binary_sensor: !include binary_sensors.yaml
+camera: !include camera.yaml
+group: !include groups.yaml
+history: !include history.yaml
+homekit: !include homekit.yaml
+input_boolean: !include input_boolean.yaml
+logbook: !include logbook.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
+sensor: !include sensors.yaml
 switch: !include switches.yaml

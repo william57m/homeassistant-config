@@ -1,0 +1,4 @@
+occupancy:
+  name: Occupancy
+  icon: mdi:home-account
+  initial: false

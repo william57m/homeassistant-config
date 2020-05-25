@@ -1,0 +1,5 @@
+exclude:
+  domains:
+    - automation
+    - script
+    - sun

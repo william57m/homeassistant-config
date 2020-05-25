@@ -23,13 +23,12 @@
     - volume_size_free
 
 - platform: mqtt
-  name: iPhone de William occupancy confidence
-  icon: mdi:cellphone-iphone
+  name: iphone_de_william_occupancy_confidence
   state_topic: 'monitor/raspberrypi/iphone_de_william'
   value_template: '{{ value_json.confidence }}'
 
 - platform: min_max
-  name: Home occupancy confidence
+  name: home_occupancy_confidence
   type: max
   round_digits: 0
   entity_ids:
