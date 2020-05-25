@@ -117,9 +117,6 @@
   - data: {}
     entity_id: alarm_control_panel.alarme
     service: alarm_control_panel.alarm_disarm
-  - data: {}
-    entity_id: switch.foscam_motion_sejour
-    service: switch.turn_off
   hide_entity: true
 - id: 871af6931a384acdbd14983237d19dcf
   alias: '[Set] Occupancy off'
