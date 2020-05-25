@@ -1,8 +1,8 @@
 filter:
   include_entities:
-    - light.lampadaire
-    - light.lampe_william
-    - light.lampe_chevet
+    - light.lampadaire_ikea
+    - light.lampe_chevet_droite
+    - light.lampe_chevet_gauche
     - climate.thermostat_salon_climate
     - binary_sensor.porte_entree_contact
     - binary_sensor.porte_balcon_contact
