@@ -82,7 +82,7 @@ homekit:
 # Camera
 camera:
   - platform: foscam
-    name: Foscam C1
+    name: camera_sejour
     ip: 192.168.2.118
     port: 88
     username: !secret foscam_user

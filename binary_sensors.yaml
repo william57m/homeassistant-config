@@ -13,7 +13,7 @@
   payload_off: 'Locked'
 
 - platform: command_line
-  name: foscam_sejour_motion_sensor
+  name: camera_sejour_motion_sensor
   device_class: motion
   command: "python3 /home/homeassistant/.homeassistant/python_scripts/foscam_command.py sejour getMotionAlert"
   value_template: '{{ value == "2" }}'

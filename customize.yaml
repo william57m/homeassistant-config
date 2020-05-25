@@ -1,4 +1,4 @@
-switch.foscam_sejour_motion_sensor:
+switch.camera_sejour_motion_sensor:
   friendly_name: Foscam séjour motion sensor toggle
   icon: mdi:motion-sensor
 
@@ -8,5 +8,5 @@ binary_sensor.mbp_william_network:
 binary_sensor.mbp_william_status:
   friendly_name: MBP William status
 
-binary_sensor.foscam_sejour_motion_sensor:
+binary_sensor.camera_sejour_motion_sensor:
   friendly_name: Foscam séjour motion sensor

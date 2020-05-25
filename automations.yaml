@@ -241,7 +241,7 @@
   condition: []
   action:
   - data: {}
-    entity_id: switch.foscam_sejour_motion_sensor
+    entity_id: switch.camera_sejour_motion_sensor
     service: switch.turn_on
 - id: '1590371659035'
   alias: Disable sensors
@@ -253,7 +253,7 @@
   condition: []
   action:
   - data: {}
-    entity_id: switch.foscam_sejour_motion_sensor
+    entity_id: switch.camera_sejour_motion_sensor
     service: switch.turn_off
 - id: '1590371910210'
   alias: Turn on alarm on occupancy off
