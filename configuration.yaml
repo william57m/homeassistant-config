@@ -64,6 +64,7 @@ history: !include history.yaml
 homekit: !include homekit.yaml
 input_boolean: !include input_boolean.yaml
 logbook: !include logbook.yaml
+recorder: !include recorder.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
 sensor: !include sensors.yaml
