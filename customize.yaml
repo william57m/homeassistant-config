@@ -7,6 +7,9 @@ binary_sensor.mbp_william_status:
 binary_sensor.camera_sejour_motion_sensor:
   friendly_name: Foscam séjour motion sensor
 
+camera.camera_sejour:
+  friendly_name: Camera séjour
+
 sensor.iphone_de_william_occupancy_confidence:
   friendly_name: iPhone de William (Occupancy confidence)
   icon: mdi:cellphone-iphone
