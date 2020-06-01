@@ -10,6 +10,43 @@ homeassistant:
 frontend:
   themes: !include_dir_merge_named themes
 
+climate:
+  platform: mqtt
+  name: Climatisation
+  initial: 22
+  precision: 1.0
+  min_temp: 18
+  max_temp: 30
+  fan_mode_command_topic: fujiac/fan/set
+  fan_mode_state_topic: fujiac/state/get
+  fan_mode_state_template: "{{ value_json.fan_mode }}"
+  mode_command_topic: fujiac/mode/set
+  mode_state_topic: fujiac/state/get
+  mode_state_template: "{{ value_json.mode }}"
+  swing_mode_command_topic: fujiac/swing/set
+  swing_mode_state_topic: fujiac/state/get
+  swing_mode_state_template: "{{ value_json.swing }}"
+  temperature_command_topic: fujiac/temperature/set
+  temperature_state_topic: fujiac/state/get
+  temperature_state_template: "{{ value_json.temperature }}"
+  current_temperature_topic: fujiac/state/get
+  current_temperature_template: "{{ value_json.temperature }}"
+  modes:
+    - "auto"
+    - "off"
+    - "cool"
+    - "dry"
+    - "fan_only"
+  fan_modes:
+    - "auto"
+    - "high"
+    - "medium"
+    - "low"
+    - "quiet"
+  swing_modes:
+    - "on"
+    - "off"
+
 # Alarm
 alarm_control_panel:
   - platform: manual

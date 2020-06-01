@@ -4,5 +4,6 @@ filter:
     - light.lampe_chevet_droite
     - light.lampe_chevet_gauche
     - climate.thermostat_salon_climate
+    - climate.climatisation
     - binary_sensor.porte_entree_contact
     - binary_sensor.porte_balcon_contact
