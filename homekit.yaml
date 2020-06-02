@@ -7,3 +7,11 @@ filter:
     - climate.climatisation
     - binary_sensor.porte_entree_contact
     - binary_sensor.porte_balcon_contact
+    - camera.camera_sejour
+entity_config:
+  camera.camera_sejour:
+    stream_source: !secret foscam_sejour_stream_source
+    video_codec: copy
+    max_width: 1280
+    max_height: 720
+    max_fps: 15

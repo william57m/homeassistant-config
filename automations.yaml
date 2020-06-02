@@ -142,6 +142,9 @@
   - data:
       topic: monitor/scan/restart
     service: mqtt.publish
+  - data:
+      topic: fujiac/reset/set
+    service: mqtt.publish
 - id: '1589722828341'
   alias: '[Notification] Sortir poubelles'
   description: ''
