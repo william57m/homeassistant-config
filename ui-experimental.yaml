@@ -1,3 +1,8 @@
+preload_cards:
+  [map, iframe, markdown]
+preload_rows:
+  [input-select-entity]
+
 anchors:
   ⚓₁: &title
     entity: sensor.placeholder
