@@ -50,11 +50,6 @@ button_card_templates:
         [font-family: Sf Display, letter-spacing: 0.05vw, text-rendering: optimizeLegibility, font-weight: 400, color: 'rgba(255, 255, 255, 0.3)', font-size: 1.34vw, 
         background-color: 'rgba(115, 115, 115, 0.2)', border-radius: 0.8vw, box-shadow: none, transition: none]
     tap_action:
-      ui_sound: &ui_sound |
-        [[[ if (entity.state === 'off' && states['switch.fullykiosk_screensaver'].state === 'off') {
-        hass.callService('media_player', 'play_media', {entity_id: 'media_player.tablet', media_content_id: '/local/sound/on.m4a', media_content_type: 'music'}); }
-        else if (entity.state === 'on' && states['switch.fullykiosk_screensaver'].state === 'off') {
-        hass.callService('media_player', 'play_media', {entity_id: 'media_player.tablet', media_content_id: '/local/sound/off.m4a', media_content_type: 'music'}); } ]]]
       action: toggle
       haptic: light
     hold_action:
@@ -227,10 +222,6 @@ button_card_templates:
         if (entity.state === 'playing') { return `<svg viewBox="0 0 166 166">${style}<path class="scale-up" d="M0 0h59.9v166H0zm106.1 0H166v166h-59.9z"/></svg>`; }
         if (entity.state === 'paused') { return `<svg viewBox="0 0 166 166">${style}<path class="scale-up" d="M0 0l166 83L0 166z"/></svg>`; } ]]]
     tap_action: &media_tap_action
-      sound: >
-        [[[ if (states['switch.fullykiosk_screensaver'].state === 'off') {
-        if (entity.state != 'off' || entity.state != 'idle' || entity.state != 'standby')
-        hass.callService('media_player', 'play_media', {entity_id: 'media_player.tablet', media_content_id: '/local/sound/popup.m4a', media_content_type: 'music'}); } ]]]
       action: >
         [[[ if (entity.state === 'off' || entity.state === 'idle' || entity.state === 'standby') {
         return 'none'; } else { return 'call-service'; } ]]]
