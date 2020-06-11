@@ -38,3 +38,8 @@
   round_digits: 0
   entity_ids:
     - sensor.iphone_de_william_occupancy_confidence
+
+- platform: template
+  sensors:
+    placeholder:
+      value_template: ' '
