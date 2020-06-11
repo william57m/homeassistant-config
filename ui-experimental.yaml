@@ -339,7 +339,8 @@ views:
             $: |
               #card { background-color: #202a2f90; }
               #card:hover, #card:active { filter: brightness(140%); transition: none; }
-      - elements:
+        
+        elements:
           - prefix: Salon
             <<: *title
             style:
