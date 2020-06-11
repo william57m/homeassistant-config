@@ -298,31 +298,54 @@ button_card_templates:
         else { return 'linear-gradient(0deg, rgba(0,0,0,.8) 0%, rgba(0,0,0,0) 100%), url(' + entity.attributes.entity_picture + ')'; } ]]]"]
 
 
-
-
-
-
 title: Home
 views:
-  - badges: []
+  - panel: true
+    path: default_view
+    title: Home
+    badges: []
     cards:
+      - type: picture-elements
+        image: /local/background.png
+        style:
+          .: |
+            /* Global */
+
+            #root > hui-icon-element {color: rgba(255, 255, 255, 0.1) !important; transition: 0.4s;}
+            #root > hui-icon-element:hover {color: rgba(255, 255, 255, 0.25) !important; transition: none;}
+            #root > hui-icon-element:active {color: rgba(255, 255, 255, 0.35) !important; transition: none;}
+
+          "#root > hui-image":
+            $: |
+              #image {pointer-events: none;}
+
+          "#root > hui-markdown-card, #key1":
+            $: |
+              ha-card > ha-markdown {padding: 0 !important;}
+
+          "#root > hui-markdown-card, #key2":
+            $:
+              "ha-card > ha-markdown":
+                $: |
+                  ha-markdown-element > font > ha-icon {vertical-align: 3%; opacity: 0.6;}
+                  ha-markdown-element > p > span {font-family: SF Text; font-size: 5vw; 
+                  font-weight: 200; margin-left: -0.3vw; letter-spacing: -0.05vw;}
+
+          "#root > hui-state-label-element":
+            $: |
+              div {padding: 0 !important;}
+
+          "#root > hui-conditional-element:nth-child(11) > button-card":
+            $: |
+              #card { background-color: #202a2f90; }
+              #card:hover, #card:active { filter: brightness(140%); transition: none; }
       - elements:
-          - entity: sensor.placeholder
-            hold_action:
-              action: none
-            prefix: Salon
+          - prefix: Salon
+            <<: *title
             style:
-              color: '#bcbebf'
-              cursor: default
-              font-family: SF Text
-              font-size: 2.4vw
-              font-weight: 500
-              left: 25.4%
-              max-width: 1px
               top: 9.15%
-            tap_action:
-              action: none
-            type: state-label
+              left: 25.4%
+              <<: *title-style
 
           - type: custom:button-card
             entity: light.lampadaire_ikea
@@ -342,48 +365,4 @@ views:
                   [top: 11%, left: 4.5%, width: 3.05vw, position: absolute]
             template: light
 
-        image: /local/background.png
-        style:
-          '#root > hui-conditional-element:nth-child(11) > button-card':
-            $: >
-              #card { background-color: #202a2f90; }
-
-              #card:hover, #card:active { filter: brightness(140%); transition:
-              none; }
-          '#root > hui-image':
-            $: |
-              #image {pointer-events: none;}
-          '#root > hui-markdown-card, #key1':
-            $: |
-              ha-card > ha-markdown {padding: 0 !important;}
-          '#root > hui-markdown-card, #key2':
-            $:
-              ha-card > ha-markdown:
-                $: >
-                  ha-markdown-element > font > ha-icon {vertical-align: 3%;
-                  opacity: 0.6;}
-
-                  ha-markdown-element > p > span {font-family: SF Text;
-                  font-size: 5vw; 
-
-                  font-weight: 200; margin-left: -0.3vw; letter-spacing:
-                  -0.05vw;}
-          '#root > hui-state-label-element':
-            $: |
-              div {padding: 0 !important;}
-          .: >
-            /* Global */
-
-            #root > hui-icon-element {color: rgba(255, 255, 255, 0.1)
-            !important; transition: 0.4s;}
-
-            #root > hui-icon-element:hover {color: rgba(255, 255, 255, 0.25)
-            !important; transition: none;}
-
-            #root > hui-icon-element:active {color: rgba(255, 255, 255, 0.35)
-            !important; transition: none;}
-        type: picture-elements
-    panel: true
-    path: default_view
-    title: Home
 
