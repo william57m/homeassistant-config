@@ -140,7 +140,7 @@
   condition: []
   action:
   - data:
-      topic: monitor/scan/arrive
+      topic: monitor/scan/restart
     service: mqtt.publish
   - data:
       topic: fujiac/reset/set
