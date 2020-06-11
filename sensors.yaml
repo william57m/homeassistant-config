@@ -27,6 +27,11 @@
   state_topic: 'monitor/raspberrypi/iphone_de_william'
   value_template: '{{ value_json.confidence }}'
 
+- platform: mqtt
+  name: iphone_de_maina_occupancy_confidence
+  state_topic: 'monitor/raspberrypi/iphone_de_maina'
+  value_template: '{{ value_json.confidence }}'
+
 - platform: min_max
   name: home_occupancy_confidence
   type: max

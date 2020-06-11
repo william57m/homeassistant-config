@@ -67,7 +67,7 @@
   - brightness_pct: 100
     device_id: 486d6ad978584ce39674ee4760664c91
     domain: light
-    entity_id: light.lampadaire
+    entity_id: light.lampadaire_ikea
     type: turn_on
 - id: '1588894249532'
   alias: '[Scan présence] Porte entrée fermé'
@@ -132,7 +132,7 @@
       entity_id: input_boolean.occupancy
     service: input_boolean.turn_off
 - id: '1588902472098'
-  alias: '[Scan présence] Initialisation'
+  alias: Initialisation
   description: ''
   trigger:
   - event: start
@@ -140,7 +140,7 @@
   condition: []
   action:
   - data:
-      topic: monitor/scan/restart
+      topic: monitor/scan/arrive
     service: mqtt.publish
   - data:
       topic: fujiac/reset/set
