@@ -1,3 +1,11 @@
+custom_header:
+  kiosk_mode: true
+  exceptions:
+    - conditions:
+        user_agent: Mobile
+      config:
+        kiosk_mode: false
+        
 anchors:
   ⚓₁: &title
     entity: sensor.placeholder
