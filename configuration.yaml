@@ -24,7 +24,7 @@ panel_custom:
       name: World
 
 lovelace:
-  mode: storage
+  mode: yaml
   resources:
     - type: module
       url: /local/community/bar-card/bar-card.js
@@ -63,6 +63,10 @@ lovelace:
     - type: css
       url: /local/font.css  
   dashboards:
+    ui-overview:
+      title: Overview
+      filename: ui-lovelace.yaml
+      mode: yaml
     ui-experimental:
       title: Experimental
       filename: ui-experimental.yaml
