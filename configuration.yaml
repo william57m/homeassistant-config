@@ -6,6 +6,11 @@ default_config:
 homeassistant:
   customize: !include customize.yaml
 
+browser_mod:
+  devices:
+    75f96d16-9ecb59ca:
+      name: mbp_will_chrome
+
 lovelace:
   mode: storage
   dashboards:
