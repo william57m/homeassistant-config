@@ -1,0 +1,211 @@
+background: var(--background-image)
+title: Home
+views:
+  - badges: []
+    cards:
+      - cards:
+          - entity: alarm_control_panel.alarme
+            states:
+              - arm_home
+              - arm_away
+            type: alarm-panel
+          - entities:
+              - entity: binary_sensor.porte_balcon_contact
+                secondary_info: last-changed
+              - entity: binary_sensor.porte_entree_contact
+                secondary_info: last-changed
+              - entity: binary_sensor.camera_sejour_motion_sensor
+                secondary_info: last-changed
+            show_header_toggle: false
+            type: entities
+        type: vertical-stack
+      - entities:
+          - entity: light.lampadaire_ikea
+            name: Lumière cuisine
+          - entity: light.lampadaire_ikea
+            name: Lumière séjour
+          - entity: light.lampadaire_ikea
+          - entity: climate.thermostat_salon_climate
+        title: Séjour
+        type: entities
+      - control:
+          hvac:
+            auto:
+              name: false
+            heat:
+              name: false
+            'off':
+              name: false
+        entity: climate.thermostat_salon_climate
+        sensors:
+          - entity: climate.thermostat_salon_climate
+            name: State
+        step_layout: row
+        step_size: 1
+        style: |
+          ha-card {
+            --st-font-size-sensors: var(--paper-font-body1_-_font-size);
+            --st-mode-active-background: {% if is_state('climate.thermostat_salon_climate', 'off') %} gray {% elif is_state('climate.thermostat_salon_climate', 'auto') %} green {% elif is_state('climate.thermostat_salon_climate', 'heat') %} orange {% else %} var(--primary-color) {% endif %};
+          }
+        type: 'custom:simple-thermostat'
+      - control:
+          hvac:
+            auto:
+              name: false
+            cool:
+              name: false
+            dry: false
+            fan_only: false
+            'off':
+              name: false
+        entity: climate.climatisation
+        hide:
+          temperature: true
+        sensors:
+          - attribute: current_temperature
+            entity: climate.thermostat_salon_climate
+            name: Temperature
+          - entity: climate.climatisation
+            name: State
+          - attribute: fan_mode
+            name: Fan
+        step_layout: row
+        step_size: 1
+        style: |
+          ha-card {
+            --st-font-size-sensors: var(--paper-font-body1_-_font-size);
+            --st-mode-active-background: {% if is_state('climate.climatisation', 'off') %} gray {% elif is_state('climate.climatisation', 'auto') %} green {% elif is_state('climate.climatisation', 'dry') %} orange {% else %} var(--primary-color) {% endif %};
+          }
+        type: 'custom:simple-thermostat'
+      - entities:
+          - entity: light.lampe_chevet_droite
+          - entity: light.lampe_chevet_gauche
+        title: Chambre
+        type: entities
+      - entities:
+          - entity: sensor.hp_envy_7640_series_black_ink
+          - entity: sensor.hp_envy_7640_series_tri_color_ink
+          - entity: sensor.hp_envy_7640_series
+        title: Bureau
+        type: entities
+      - aspect_ratio: 50%
+        camera_image: camera.camera_sejour
+        entities:
+          - entity: switch.camera_sejour_motion_sensor
+        title: Caméra Séjour
+        type: picture-glance
+      - entity: weather.home
+        type: weather-forecast
+      - entity: media_player.mibox4
+        type: media-control
+    icon: 'mdi:home'
+    path: default_view
+    title: Home
+  - badges:
+      - entity: device_tracker.iphone_de_william
+      - entity: sensor.iphone_de_william_battery_level
+    cards:
+      - entities:
+          - entity: sensor.withings_weight_kg_william_mura
+            icon: 'mdi:scale-bathroom'
+          - entity: sensor.withings_fat_free_mass_kg_william_mura
+            icon: 'mdi:weight-kilogram'
+          - entity: sensor.withings_fat_mass_kg_william_mura
+            icon: 'mdi:weight'
+          - entity: sensor.withings_fat_ratio_pct_william_mura
+            icon: 'mdi:align-vertical-bottom'
+        show_icon: true
+        show_state: true
+        title: Balance
+        type: glance
+      - dark_mode: false
+        entities:
+          - entity: device_tracker.iphone_de_william
+        hours_to_show: 0
+        title: iPhone de William
+        type: map
+    icon: 'mdi:account'
+    path: william-mura
+    title: William Mura
+    visible:
+      - user: 1760f7b02e214b808f4b1608d2d0b1be
+  - badges: []
+    cards:
+      - entities:
+          - entity: script.lock_mbp_william
+            icon: 'mdi:monitor-lock'
+            name: Lock
+          - entity: binary_sensor.mbp_william_status
+            name: Status
+          - entity: binary_sensor.mbp_william_network
+            name: Network
+        title: MBP - William
+        type: entities
+      - entities:
+          - entity: sensor.nasmtl01_cpu_usage
+            icon: 'mdi:chip'
+            name: CPU used
+          - entity: sensor.nasmtl01_memory_used
+            icon: 'mdi:memory'
+            name: Memory used
+          - entity: sensor.nasmtl01_memory_available
+            icon: 'mdi:memory'
+            name: Memory free
+          - entity: sensor.nasmtl01_used_space_volume_1
+            icon: 'mdi:harddisk'
+            name: Space used (Volume 1)
+          - entity: sensor.nasmtl01_free_space_volume_1
+            icon: 'mdi:harddisk'
+            name: Space free (Volume 1)
+          - entity: sensor.nasmtl01_system_temperature
+            name: System temperature
+          - entity: sensor.nasmtl01_status
+            icon: 'mdi:checkbox-marked-circle-outline'
+            name: Status
+        title: NAS - MTL01
+        type: entities
+      - entities:
+          - entity: sensor.processor_use
+            icon: 'mdi:chip'
+            name: CPU used
+          - entity: sensor.memory_use
+            icon: 'mdi:memory'
+            name: Memory used
+          - entity: sensor.memory_free
+            icon: 'mdi:memory'
+            name: Memory free
+          - entity: sensor.disk_use_home
+            icon: 'mdi:harddisk'
+            name: Space used (/home)
+          - entity: sensor.disk_free_home
+            icon: 'mdi:harddisk'
+            name: Space free (/home)
+          - entity: sensor.last_boot
+        title: RP3 - Home Assistant
+        type: entities
+    icon: 'mdi:server-network'
+    path: servers
+    title: Servers
+    visible:
+      - user: 1760f7b02e214b808f4b1608d2d0b1be
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.iphone_de_william_occupancy_confidence
+          - entity: sensor.iphone_de_maina_occupancy_confidence
+          - entity: sensor.home_occupancy_confidence
+          - entity: device_tracker.iphone_de_william
+          - entity: input_boolean.occupancy
+        title: Occupancy
+        type: entities
+      - entities:
+          - entity: sensor.iphone_de_william_battery_level
+          - entity: sensor.porte_entree_battery
+          - entity: sensor.porte_balcon_battery
+        title: Batteries
+        type: entities
+    icon: 'mdi:information'
+    path: debug
+    title: Debug
+    visible:
+      - user: 1760f7b02e214b808f4b1608d2d0b1be
