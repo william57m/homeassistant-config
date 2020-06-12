@@ -24,7 +24,7 @@ panel_custom:
       name: World
 
 lovelace:
-  mode: yaml
+  mode: storage
   resources:
     - type: module
       url: /local/simple-thermostat.js
@@ -64,11 +64,11 @@ lovelace:
       url: '/local/custom_icons.js?v=25052001'
     - type: css
       url: /local/font.css  
-  dashboards:
-    ui-experimental:
-      title: Experimental
-      filename: ui-experimental.yaml
-      mode: yaml
+  # dashboards:
+  #   ui-experimental:
+  #     title: Experimental
+  #     filename: ui-experimental.yaml
+  #     mode: yaml
 
 # Themes
 frontend:
