@@ -63,7 +63,7 @@ button_card_templates:
       card:
         - *button_styles_card
         - width: 120px
-        - height: 20px
+        - height: 40px
 
   light:
     state: &button_state
@@ -242,7 +242,7 @@ views:
             name: Lampe chevet
             style:
               top: 20%
-              left: calc(30% + 150px)
+              left: calc(30% + 140px)
             custom_fields:
               icon: >
                 [[[ const state = entity.state === 'on' ? 'animate' : null;
@@ -258,7 +258,7 @@ views:
             name: Lock MBP
             style:
               top: 20%
-              left: calc(40% + 150px)
+              left: calc(30% + 280px)
             template:
               - homekit
               - scene
