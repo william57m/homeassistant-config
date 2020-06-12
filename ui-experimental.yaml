@@ -64,6 +64,9 @@ button_card_templates:
         - *button_styles_card
         - width: 120px
         - height: 40px
+      name:
+        - *button_styles_name
+        - top: 10px
 
   light:
     state: &button_state
