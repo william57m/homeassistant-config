@@ -16,6 +16,7 @@ panel_custom:
 - name: react-panel
   sidebar_title: React Demo
   sidebar_icon: mdi:react
+  trust_external_script: true
   # This is the url that will load the panel
   url_path: react-panel-demo
   # Location where the panel is hosted during development
