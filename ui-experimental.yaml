@@ -40,7 +40,7 @@ button_card_templates:
         <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">${brightness}<tspan font-size="10">%</tspan></text></svg>`; } ]]]
     styles:
       name: &button_styles_name
-        [top: 57.7%, left: 11%, position: absolute, line-height: 2vw]
+        [top: 57.7%, left: 11%, position: absolute, line-height: 2vw, font-weight: bold]
       state: &button_styles_state
         [top: 74%, left: 11%, position: absolute, line-height: 2vw]
       custom_fields:
@@ -253,7 +253,7 @@ button_card_templates:
           else return 'rgba(255, 255, 255, 0.8)'; ]]]", 
           top: 5.35%, left: 5.35%, width: 2.95vw, position: absolute]
       name:
-        [top: 79.8%, left: 5.3%, position: absolute, line-height: 2vw, z-index: 10, font-weight: bold]
+        [top: 79.8%, left: 5.3%, position: absolute, line-height: 2vw, z-index: 10]
       state:
         [top: 87.5%, left: 5.3%, position: absolute, line-height: 2vw, z-index: 10, 
         white-space: nowrap, overflow: hidden, text-overflow: ellipsis, max-width: 90%]
