@@ -27,6 +27,8 @@ lovelace:
   mode: yaml
   resources:
     - type: module
+      url: /local/simple-thermostat.js
+    - type: module
       url: /local/community/bar-card/bar-card.js
     - type: module
       url: /local/community/button-card/button-card.js
@@ -63,10 +65,6 @@ lovelace:
     - type: css
       url: /local/font.css  
   dashboards:
-    ui-overview:
-      title: Overview
-      filename: ui-lovelace.yaml
-      mode: yaml
     ui-experimental:
       title: Experimental
       filename: ui-experimental.yaml
