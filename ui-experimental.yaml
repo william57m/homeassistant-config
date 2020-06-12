@@ -35,6 +35,8 @@ button_card_templates:
         - border-radius: 10px
         - box-shadow: none
         - transition: none
+        - width: 120px
+        - height: 120px
       name: &button_styles_name
         - top: 60%
         - left: 10%
