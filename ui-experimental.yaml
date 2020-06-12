@@ -20,10 +20,12 @@ anchors:
     cursor: default
 
 button_card_templates:
-  light:
-    aspect_ratio: 1/1
+  homekit:
     show_state: true
     show_icon: false
+    aspect_ratio: 1/1
+
+  light:
     state: &button_state
       - value: 'on'
         styles:
@@ -355,7 +357,9 @@ views:
               custom_fields:
                 icon_hue:
                   [top: 11%, left: 4.5%, width: 3.05vw, position: absolute]
-            template: light
+            template:
+              - homekit
+              - light
 
           - type: custom:button-card
             entity: light.lampe_chevet_droite
@@ -375,6 +379,8 @@ views:
               custom_fields:
                 icon_shade:
                   [top: 11%, left: 4.6%, width: 3.05vw, position: absolute]
-            template: light
+            template:
+              - homekit
+              - light
 
 
