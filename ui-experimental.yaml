@@ -24,6 +24,11 @@ button_card_templates:
     show_state: true
     show_icon: false
     aspect_ratio: 1/1
+    styles:
+      name: &button_styles_name
+        - font-weight: bold
+      state: &button_styles_state
+        - line-height: 2vw
 
   light:
     state: &button_state
@@ -41,10 +46,6 @@ button_card_templates:
         transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference - brightness / 100 * circumference};" />
         <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">${brightness}<tspan font-size="8">%</tspan></text></svg>`; } ]]]
     styles:
-      name: &button_styles_name
-        [top: 57.7%, left: 11%, position: absolute, line-height: 2vw, font-weight: bold]
-      state: &button_styles_state
-        [top: 74%, left: 11%, position: absolute, line-height: 2vw]
       custom_fields:
         info: &circle_pos
           [top: 8.5%, left: 56.2%, width: 3.5vw, position: absolute, letter-spacing: 0.03vw]
