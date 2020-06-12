@@ -371,7 +371,7 @@ views:
             styles: &icon_hue_styles
               custom_fields:
                 icon_hue:
-                  [top: 11%, left: 4.5%, width: 3.05vw, position: absolute]
+                  [top: 11%, left: 4.5%, width: 45px, position: absolute]
             template:
               - homekit
               - light
@@ -391,7 +391,7 @@ views:
             styles:
               custom_fields:
                 icon_shade:
-                  [top: 11%, left: 4.6%, width: 3.05vw, position: absolute]
+                  [top: 11%, left: 4.6%, width: 45px, position: absolute]
             template:
               - homekit
               - light
