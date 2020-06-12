@@ -191,7 +191,7 @@ button_card_templates:
   name_action:
     styles:
       name:
-        [display: flex, align-items: center, justify-content: center, margin-top: 0.5px, font-weight: bold]
+        [display: flex, align-items: center, justify-content: center, margin-top: 0.5px]
       card:
         [background: '#FFFFFF10', color: '#9da0a2', border-radius: 0.6em, box-shadow: none, 
         transition: none, width: 100%, padding: 1em 1.4em 1em 1.2em, font-size: 1.06em, 
@@ -253,7 +253,7 @@ button_card_templates:
           else return 'rgba(255, 255, 255, 0.8)'; ]]]", 
           top: 5.35%, left: 5.35%, width: 2.95vw, position: absolute]
       name:
-        [top: 79.8%, left: 5.3%, position: absolute, line-height: 2vw, z-index: 10]
+        [top: 79.8%, left: 5.3%, position: absolute, line-height: 2vw, z-index: 10, font-weight: bold]
       state:
         [top: 87.5%, left: 5.3%, position: absolute, line-height: 2vw, z-index: 10, 
         white-space: nowrap, overflow: hidden, text-overflow: ellipsis, max-width: 90%]
