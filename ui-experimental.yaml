@@ -56,9 +56,6 @@ button_card_templates:
       custom_fields:
         info: &circle_pos
           [top: 8.5%, left: 56.2%, width: 3.5vw, position: absolute, letter-spacing: 0.03vw]
-      card: &button_styles_card
-        [font-family: Sf Display, text-rendering: optimizeLegibility, font-weight: 400, color: 'rgba(255, 255, 255, 0.3)', font-size: 12px, 
-        background-color: 'rgba(115, 115, 115, 0.2)', border-radius: 0.8vw, box-shadow: none, transition: none]
     tap_action:
       action: toggle
       haptic: light
@@ -136,7 +133,7 @@ button_card_templates:
                       color: "#ce944b"
                     - service: browser_mod.popup
                       service_data:
-                        title: Stäng
+                        title: Lumière
                         deviceID: this
                         style:
                           --ha-card-border-radius: 1em
