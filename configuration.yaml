@@ -24,7 +24,7 @@ panel_custom:
       name: World
 
 lovelace:
-  mode: storage
+  mode: yaml
   dashboards:
     ui-experimental:
       title: Experimental
