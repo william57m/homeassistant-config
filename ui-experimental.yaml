@@ -191,7 +191,7 @@ button_card_templates:
   name_action:
     styles:
       name:
-        [display: flex, align-items: center, justify-content: center, margin-top: 0.5px]
+        [display: flex, align-items: center, justify-content: center, margin-top: 0.5px, font-weight: bold]
       card:
         [background: '#FFFFFF10', color: '#9da0a2', border-radius: 0.6em, box-shadow: none, 
         transition: none, width: 100%, padding: 1em 1.4em 1em 1.2em, font-size: 1.06em, 
