@@ -204,11 +204,12 @@ views:
         image: /local/background.png
 
         elements:
+
           - prefix: Salon
             <<: *title
             style:
-              top: 9.15%
-              left: 25.4%
+              top: 10%
+              left: 20%
               <<: *title-style
 
           - type: custom:button-card
