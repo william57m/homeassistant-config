@@ -73,7 +73,10 @@ button_card_templates:
     styles:
       custom_fields:
         info: &circle_pos
-          [top: 8.5%, left: 56.2%, width: 3.5vw, position: absolute, letter-spacing: 0.03vw]
+          - top: 10%
+          - right: 5%
+          - width: 45px
+          - position: absolute
     tap_action:
       action: toggle
       haptic: light
