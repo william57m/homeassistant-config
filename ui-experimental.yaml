@@ -61,17 +61,9 @@ button_card_templates:
     show_state: false
     styles:
       card:
-        - font-family: Sf Display
-        - text-rendering: optimizeLegibility
-        - font-weight: 400
-        - color: 'rgba(255, 255, 255, 0.3)'
-        - font-size: 12px
-        - background-color: 'rgba(115, 115, 115, 0.2)'
-        - border-radius: 10px
-        - box-shadow: none
-        - transition: none
-        - width: 120px
-        - height: 20px
+        - *button_styles_card
+        - width: 120px;
+        - height: 20px;
 
   light:
     state: &button_state
