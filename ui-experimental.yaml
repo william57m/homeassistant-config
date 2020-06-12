@@ -343,7 +343,8 @@ views:
             style:
               top: 20.35%
               left: 30.31%
-              width: 10%
+              width: 120px;
+              height: 120px;
             custom_fields:
               icon_hue: &icon_hue >
                 [[[ const state = entity.state === 'on' ? 'animate' : null;
@@ -362,7 +363,8 @@ views:
             style:
               top: 20.35%
               left: 41.31%
-              width: 10%
+              width: 120px;
+              height: 120px;
             custom_fields:
               icon_shade: >
                 [[[ const state = entity.state === 'on' ? 'animate' : null;
