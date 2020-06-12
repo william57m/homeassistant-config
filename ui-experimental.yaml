@@ -60,7 +60,7 @@ button_card_templates:
   scene:
     show_state: false
     styles:
-      card:
+      card: *button_styles_card
         - width: 120px;
         - height: 20px;
 
