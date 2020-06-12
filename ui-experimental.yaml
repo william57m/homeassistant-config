@@ -5,7 +5,7 @@ custom_header:
         user_agent: Mobile
       config:
         kiosk_mode: false
-        
+
 anchors:
   ⚓₁: &title
     entity: sensor.placeholder
