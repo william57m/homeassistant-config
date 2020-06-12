@@ -57,6 +57,13 @@ button_card_templates:
           - width: 45px
           - position: absolute
 
+  scene:
+    show_state: false
+    styles:
+      card:
+        - width: 120px;
+        - height: 20px;
+
   light:
     state: &button_state
       - value: 'on'
@@ -244,5 +251,15 @@ views:
             template:
               - homekit
               - light
+
+          - type: custom:button-card
+            entity: script.lock_mbp_william
+            name: Lock MBP
+            style:
+              top: 20%
+              left: calc(40% + 150px)
+            template:
+              - homekit
+              - scene
 
 
