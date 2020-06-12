@@ -24,7 +24,7 @@ panel_custom:
       name: World
 
 lovelace:
-  mode: yaml
+  mode: storage
   resources:
     - type: module
       url: /local/community/bar-card/bar-card.js
