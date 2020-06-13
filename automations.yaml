@@ -69,6 +69,11 @@
     domain: light
     entity_id: light.lampadaire_ikea
     type: turn_on
+  - brightness_pct: 100
+    device_id: 07fe70d7a5a74521b01a91e46797885b
+    domain: light
+    entity_id: light.lumiere_salon
+    type: turn_on
 - id: '1588894249532'
   alias: '[Scan présence] Porte entrée fermé'
   description: ''

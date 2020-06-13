@@ -1,6 +1,8 @@
 filter:
   include_entities:
     - light.lampadaire_ikea
+    - light.lumiere_cuisine
+    - light.lumiere_salon
     - light.lampe_chevet_droite
     - light.lampe_chevet_gauche
     - climate.thermostat_salon_climate
