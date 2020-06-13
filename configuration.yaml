@@ -6,6 +6,18 @@ default_config:
 homeassistant:
   customize: !include customize.yaml
 
+# Experimental React Dashboard
+panel_custom:
+  - name: react-panel
+    sidebar_title: React Demo
+    sidebar_icon: mdi:react
+    trust_external_script: true
+    url_path: react-panel-demo
+    js_url: http://192.168.2.102:8080/main.js
+    embed_iframe: true
+    config:
+      name: World
+
 # Themes
 frontend:
   themes: !include_dir_merge_named themes
@@ -86,6 +98,11 @@ notify:
   - name: telegram
     platform: telegram
     chat_id: !secret telegram_chat_id
+
+# Zwave
+zwave:
+  usb_path: /dev/serial/by-id/usb-0658_0200-if00
+  network_key: "0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10"
 
 # MQTT
 mqtt:
