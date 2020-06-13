@@ -2,19 +2,11 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-zwave:
-  usb_path: /dev/serial/by-id/usb-0658_0200-if00
-  network_key: "0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10"
-
 # Home assistant
 homeassistant:
   customize: !include customize.yaml
 
-browser_mod:
-  devices:
-    75f96d16-9ecb59ca:
-      name: mbp_will_chrome
-
+# Experimental React Dashboard
 panel_custom:
   - name: react-panel
     sidebar_title: React Demo
@@ -23,56 +15,8 @@ panel_custom:
     url_path: react-panel-demo
     js_url: http://192.168.2.102:8080/main.js
     embed_iframe: true
-    # This will be available as prop `panel.config`.
     config:
       name: World
-
-lovelace:
-  mode: storage
-  resources:
-    - type: module
-      url: /local/simple-thermostat.js
-    - type: module
-      url: /local/community/bar-card/bar-card.js
-    - type: module
-      url: /local/community/button-card/button-card.js
-    - type: module
-      url: /local/community/calendar-card/calendar-card.js
-    - type: module
-      url: /local/community/custom-header/custom-header.js
-    - type: js
-      url: /local/community/light-entity-card/light-entity-card.js
-    - type: module
-      url: /local/community/light-popup-card/light-popup-card.js
-    - type: module
-      url: /local/community/lovelace-card-mod/card-mod.js
-    - type: module
-      url: /local/community/lovelace-card-preloader/lovelace-card-preloader.js
-    - type: module
-      url: /local/community/lovelace-hui-element/hui-element.js
-    - type: module
-      url: /local/community/lovelace-layout-card/layout-card.js
-    - type: js
-      url: /local/community/lovelace-valetudo-map-card/valetudo-map-card.js
-    - type: module
-      url: /local/community/mini-graph-card/mini-graph-card-bundle.js
-    - type: module
-      url: /local/community/mini-media-player/mini-media-player-bundle.js
-    - type: module
-      url: /local/community/popup-backdrop-filter/popup-backdrop-filter.js
-    - type: module
-      url: /local/community/stack-in-card/stack-in-card.js
-    - type: module
-      url: /local/community/swipe-card/swipe-card.js
-    - type: module
-      url: '/local/custom_icons.js?v=25052001'
-    - type: css
-      url: /local/font.css  
-  # dashboards:
-  #   ui-experimental:
-  #     title: Experimental
-  #     filename: ui-experimental.yaml
-  #     mode: yaml
 
 # Themes
 frontend:
@@ -154,6 +98,11 @@ notify:
   - name: telegram
     platform: telegram
     chat_id: !secret telegram_chat_id
+
+# Zwave
+zwave:
+  usb_path: /dev/serial/by-id/usb-0658_0200-if00
+  network_key: "0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10"
 
 # MQTT
 mqtt:
