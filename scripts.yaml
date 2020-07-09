@@ -3,3 +3,14 @@ lock_mbp_william:
   sequence:
   - data: {}
     service: shell_command.send_sleep_command_mac
+'1592157239198':
+  alias: Test popup
+  sequence:
+  - data:
+      card:
+        entities:
+        - light.lampadaire_ikea
+        - camera.camera_sejour
+        type: entities
+      title: Popup example
+    service: browser_mod.popup

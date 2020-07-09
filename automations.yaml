@@ -46,7 +46,7 @@
       message: Porte balcon ouverte
     service: notify.telegram
 - id: '1588612500729'
-  alias: '[Lumière] Porte entrée ouverte (Absent, soir)'
+  alias: '[Lumière] Porte entrée ouverte soir'
   description: ''
   trigger:
   - device_id: cb834a7d240848d8a22d634f370ddc08
@@ -57,12 +57,12 @@
   condition:
   - condition: and
     conditions:
-    - after: '20:00:00'
-      before: '4:00:00'
-      condition: time
     - condition: state
-      entity_id: binary_sensor.occupancy
+      entity_id: input_boolean.occupancy
       state: 'off'
+    - after: '20:00'
+      before: '23:59'
+      condition: time
   action:
   - brightness_pct: 100
     device_id: 486d6ad978584ce39674ee4760664c91
@@ -145,7 +145,7 @@
   condition: []
   action:
   - data:
-      topic: monitor/scan/arrive
+      topic: monitor/scan/restart
     service: mqtt.publish
   - data:
       topic: fujiac/reset/set
@@ -164,6 +164,9 @@
   - data:
       message: N'oubliez pas de sortir les poubelles avant demain matin 8h00
     service: notify.telegram
+  - data:
+      message: N'oubliez pas de sortir les poubelles avant demain matin 8h00
+    service: persistent_notification.create
 - id: '1590177999538'
   alias: '[Notification] Mouvement camera sejour'
   description: ''
@@ -273,3 +276,31 @@
   - data: {}
     entity_id: alarm_control_panel.alarme
     service: alarm_control_panel.alarm_arm_away
+- id: '1592537708859'
+  alias: Turn off AC
+  description: ''
+  trigger:
+  - at: 0:20
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    entity_id: climate.climatisation
+    service: climate.turn_off
+- id: '1594307563684'
+  alias: '[Notification] Courrier'
+  description: ''
+  trigger:
+  - device_id: 4bb17fef30eb4ab0ad7bb0c01958c2a3
+    domain: binary_sensor
+    entity_id: binary_sensor.boite_a_lettre_contact
+    platform: device
+    type: opened
+  condition: []
+  action:
+  - data:
+      message: Vous avez reçu du courrier
+    service: notify.telegram
+  - data:
+      message: Vous avez reçu du courrier
+    service: persistent_notification.create
