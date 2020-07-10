@@ -10,6 +10,9 @@ binary_sensor.camera_sejour_motion_sensor:
 camera.camera_sejour:
   friendly_name: Camera séjour
 
+camera.camera_balcon:
+  friendly_name: Camera balcon
+
 sensor.iphone_de_william_occupancy_confidence:
   friendly_name: iPhone de William (Occupancy confidence)
   icon: mdi:cellphone-iphone
