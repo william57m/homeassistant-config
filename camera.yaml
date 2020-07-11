@@ -4,3 +4,11 @@
   port: 88
   username: !secret foscam_user
   password: !secret foscam_password
+
+- platform: generic
+  name: camera_balcon
+  still_image_url: !hikvision_balcon_still_image
+  stream_source: !secret hikvision_balcon_stream_source
+  username: !secret hikvision_user
+  password: !secret hikvision_password
+  authentication: digest
