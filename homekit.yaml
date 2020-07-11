@@ -12,7 +12,7 @@ filter:
     - camera.camera_sejour
 entity_config:
   camera.camera_sejour:
-    stream_source: !secret foscam_sejour_stream_source
+    stream_source: !secret camera_sejour_stream_source
     video_codec: copy
     max_width: 1280
     max_height: 720
