@@ -1,8 +1,8 @@
 - platform: command_line
   switches:
     camera_sejour_motion_sensor:
-      command_on: "python3 /home/homeassistant/.homeassistant/python_scripts/foscam_command.py sejour setMotionSensor '1'"
-      command_off: "python3 /home/homeassistant/.homeassistant/python_scripts/foscam_command.py sejour setMotionSensor '0'"
-      command_state: "python3 /home/homeassistant/.homeassistant/python_scripts/foscam_command.py sejour getMotionSensor"
+      command_on: "python3 /home/homeassistant/.homeassistant/python_scripts/camera_command.py sejour setMotionSensor '1'"
+      command_off: "python3 /home/homeassistant/.homeassistant/python_scripts/camera_command.py sejour setMotionSensor '0'"
+      command_state: "python3 /home/homeassistant/.homeassistant/python_scripts/camera_command.py sejour getMotionSensor"
       value_template: '{{ value == "1" }}'
       friendly_name: Motion sensor camera séjour

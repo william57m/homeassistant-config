@@ -2,5 +2,5 @@
   name: camera_sejour
   ip: 192.168.2.118
   port: 88
-  username: !secret foscam_user
-  password: !secret foscam_password
+  username: !secret camera_sejour_user
+  password: !secret camera_sejour_password
