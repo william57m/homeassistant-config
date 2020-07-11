@@ -44,8 +44,9 @@ def download_snapshot(ip, port, user, password, to_path):
   '''
   Download snapshot for the given path
   '''
-  url = f'http://{user}:{password}@{ip}:{port}/ISAPI/Streaming/channels/1/picture'
-  r = requests.get(url)
+  url = f'http://{ip}:{port}/ISAPI/Streaming/channels/101/picture'
+  print(url)
+  r = requests.get(url, auth=requests.auth.HTTPDigestAuth(user, password))
   with open(to_path, 'wb') as f:
     f.write(r.content)
 
