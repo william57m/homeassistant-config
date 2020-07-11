@@ -9,7 +9,9 @@ filter:
     - climate.climatisation
     - binary_sensor.porte_entree_contact
     - binary_sensor.porte_balcon_contact
+    - binary_sensor.fenetre_chambre_contact
     - camera.camera_sejour
+    - camera.camera_balcon
 entity_config:
   camera.camera_sejour:
     stream_source: !secret camera_sejour_stream_source

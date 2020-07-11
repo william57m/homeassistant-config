@@ -1,0 +1,59 @@
+- id: '1593440007085'
+  name: Tout éteindre
+  entities:
+    light.lampadaire_ikea:
+      friendly_name: Lampadaire
+      state: 'off'
+      supported_features: 41
+    light.lampe_chevet_droite:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Lampe William
+      state: 'off'
+      supported_features: 61
+    light.lampe_chevet_gauche:
+      friendly_name: Lampe Maina
+      state: 'off'
+      supported_features: 41
+    light.lumiere_cuisine:
+      friendly_name: Lumière cuisine
+      node_id: 4
+      state: 'off'
+      supported_features: 1
+      value_id: '72057594109853697'
+      value_index: 0
+      value_instance: 1
+    light.lumiere_salon:
+      friendly_name: Lumière salon
+      node_id: 5
+      state: 'off'
+      supported_features: 1
+      value_id: '72057594126630913'
+      value_index: 0
+      value_instance: 1
+- id: '1593440123149'
+  name: Cozy
+  entities:
+    light.lampadaire_ikea:
+      brightness: 187
+      friendly_name: Lampadaire
+      state: 'on'
+      supported_features: 41
+    light.lumiere_cuisine:
+      friendly_name: Lumière cuisine
+      node_id: 4
+      state: 'off'
+      supported_features: 1
+      value_id: '72057594109853697'
+      value_index: 0
+      value_instance: 1
+    light.lumiere_salon:
+      brightness: 44
+      friendly_name: Lumière salon
+      node_id: 5
+      state: 'on'
+      supported_features: 1
+      value_id: '72057594126630913'
+      value_index: 0
+      value_instance: 1

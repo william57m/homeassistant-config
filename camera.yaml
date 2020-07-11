@@ -4,3 +4,11 @@
   port: 88
   username: !secret camera_sejour_user
   password: !secret camera_sejour_password
+
+- platform: generic
+  name: camera_balcon
+  still_image_url: !secret camera_balcon_still_image
+  stream_source: !secret camera_balcon_stream_source
+  username: !secret camera_balcon_user
+  password: !secret camera_balcon_password
+  authentication: digest
