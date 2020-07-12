@@ -15,6 +15,6 @@
 - platform: command_line
   name: camera_sejour_motion_sensor
   device_class: motion
-  command: "python3 /home/homeassistant/.homeassistant/python_scripts/camera_command.py sejour getMotionAlert"
+  command: "python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_command.py sejour getMotionAlert"
   value_template: '{{ value == "2" }}'
   scan_interval: 2

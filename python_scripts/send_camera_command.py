@@ -4,7 +4,7 @@ Process Foscam commands
   - getMotionSensor
   - setMotionSensor
 
-python3 camera_command.py CAMERA_NAME COMMAND [OPTIONS]
+python3 send_camera_command.py CAMERA_NAME COMMAND [OPTIONS]
 '''
 
 import sys
