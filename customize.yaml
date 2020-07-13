@@ -26,5 +26,9 @@ sensor.home_occupancy_confidence:
   icon: mdi:home-account
 
 switch.camera_sejour_motion_sensor:
-  friendly_name: Foscam séjour motion sensor toggle
+  friendly_name: Camera séjour motion sensor toggle
+  icon: mdi:motion-sensor
+
+switch.camera_balcon_motion_sensor:
+  friendly_name: Camera balcon motion sensor toggle
   icon: mdi:motion-sensor
