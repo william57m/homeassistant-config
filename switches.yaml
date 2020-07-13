@@ -6,3 +6,9 @@
       command_state: "python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_command.py sejour getMotionSensor"
       value_template: '{{ value == "1" }}'
       friendly_name: Motion sensor camera séjour
+    camera_balcon_motion_sensor:
+      command_on: "python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_command.py balcon setMotionSensor '1'"
+      command_off: "python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_command.py balcon setMotionSensor '0'"
+      command_state: "python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_command.py balcon getMotionSensor"
+      value_template: '{{ value == "1" }}'
+      friendly_name: Motion sensor camera balcon
