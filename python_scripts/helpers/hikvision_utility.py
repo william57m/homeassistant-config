@@ -1,21 +1,44 @@
 import requests
 import xmltodict
 
+def get_xml(enabled):
+  enabled_bool = str(bool(int(enabled))).lower()
+
+  return f'''
+    <?xml version="1.0" sencoding="UTF-8"?>
+      <MotionDetection version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+          <enabled>{enabled_bool}</enabled>
+          <enableHighlight>{enabled_bool}</enableHighlight>
+          <samplingInterval>2</samplingInterval>
+          <startTriggerTime>500</startTriggerTime>
+          <endTriggerTime>500</endTriggerTime>
+          <regionType>grid</regionType>
+          <Grid>
+              <rowGranularity>18</rowGranularity>
+              <columnGranularity>22</columnGranularity>
+          </Grid>
+          <MotionDetectionLayout version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
+              <sensitivityLevel>20</sensitivityLevel>
+              <layout>
+                  <gridMap>fffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffc</gridMap>
+              </layout>
+          </MotionDetectionLayout>
+      </MotionDetection>
+    '''
+
 
 def set_motion_sensor(ip, port, user, password, state=1):
   '''
   Enable/Disable motion sensor
-  Docs: https://www.camarasip.es/descarga/IP_Camera_CGI_(SDK).pdf
+  Docs: http://download.viakom.cz/HIKVISION/SDK/How%20to%20integrate%20with%20Hikvision%20LPR%20function%20via%20ISAPI-v1%200%200.pdf
     :param state: 0 disabled, 1 enabled
   '''
 
-  # Params
-  linkage = 8
-  schedule = 'schedule0=281474976710655&schedule1=281474976710655&schedule2=281474976710655&schedule3=281474976710655&schedule4=281474976710655&schedule5=281474976710655&schedule6=281474976710655'
-  area = 'area0=1023&area1=1023&area2=1023&area3=1023&area4=1023&area5=1023&area6=1023&area7=1023&area8=1023&area9=1023'
+  xml = get_xml(state)
+  headers = {'Content-Type': 'application/xml'}
 
   # Call
-  requests.get(f'http://{ip}:{port}/cgi-bin/CGIProxy.fcgi?cmd=setMotionDetectConfig&isEnable={state}&usr={user}&pwd={password}&linkage={linkage}&schedule={schedule}&area={area}')
+  r=requests.put(f'http://{ip}:{port}/ISAPI/System/Video/inputs/channels/1/motionDetection', headers=headers, data=xml, auth=requests.auth.HTTPDigestAuth(user, password))
 
 
 def get_motion_sensor_state(ip, port, user, password):
@@ -23,10 +46,11 @@ def get_motion_sensor_state(ip, port, user, password):
   Get motion sensor state
     :return: 0 disabled, 1 enabled
   '''
-  response = requests.get(f'http://{ip}:{port}/cgi-bin/CGIProxy.fcgi?cmd=getMotionDetectConfig&usr={user}&pwd={password}')
+  response = requests.get(f'http://{ip}:{port}/ISAPI/System/Video/inputs/channels/1/motionDetection', auth=requests.auth.HTTPDigestAuth(user, password))
   doc = xmltodict.parse(response.content)
-  result = doc['CGI_Result']['isEnable'][0]
-  print(result)
+  result = doc['MotionDetection']['enabled']
+  result_int = 1 if result == 'true' else 0
+  print(result_int)
 
 
 def get_motion_alert(ip, port, user, password):
