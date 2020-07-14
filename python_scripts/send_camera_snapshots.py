@@ -1,7 +1,7 @@
 '''
 Send snapshots via telegram for the given camera
 
-python3 send_camera_snapshots.py CAMERA_NAME
+python3 send_camera_snapshots.py CAMERA_NAME [NB_SNAPSHOTS]
 '''
 
 import sys
@@ -22,6 +22,8 @@ secrets = get_secrets()
 
 # Get state from args
 camera_name = sys.argv[1]
+if len(sys.argv) > 2:
+  nb_snapshot = int(sys.argv[2])
 
 # Bot informations
 api_key = secrets['telegram_api_key']

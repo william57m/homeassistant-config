@@ -20,7 +20,7 @@ def get_xml(enabled):
           <MotionDetectionLayout version="2.0" xmlns="http://www.hikvision.com/ver20/XMLSchema">
               <sensitivityLevel>20</sensitivityLevel>
               <layout>
-                  <gridMap>fffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffcfffffc</gridMap>
+                  <gridMap>0000000000000000000000040000040000040000040c00040f000c1f000c3fc01c3ffffcfffffcfffffcfffffcfffffcfffffcfffffc</gridMap>
               </layout>
           </MotionDetectionLayout>
       </MotionDetection>
