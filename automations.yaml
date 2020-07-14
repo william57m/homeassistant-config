@@ -45,6 +45,9 @@
   - data:
       message: Porte balcon ouverte
     service: notify.telegram
+  - data:
+      camera_name: balcon
+    service: shell_command.send_camera_snapshots
 - id: '1588612500729'
   alias: '[Lumière] Porte entrée ouverte soir'
   description: ''
@@ -167,21 +170,8 @@
   - data:
       message: N'oubliez pas de sortir les poubelles avant demain matin 8h00
     service: persistent_notification.create
-- id: '1590177999538'
-  alias: '[Notification] Mouvement camera sejour'
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.camera_sejour_motion
-    from: 'False'
-    platform: state
-    to: 'True'
-  condition: []
-  action:
-  - data:
-      message: Mouvement dans le sejour
-    service: notify.telegram
 - id: '1590284669925'
-  alias: '[Notification] When alarm is armed in away mode'
+  alias: '[Notification] Alarme activée (absent)'
   description: ''
   trigger:
   - entity_id: alarm_control_panel.alarme
@@ -193,7 +183,7 @@
       message: Alarme activé (Mode absent)
     service: notify.telegram
 - id: '1590285643911'
-  alias: '[Notification] When alarm is armed in night mode'
+  alias: '[Notification] Alarme activée (nuit)'
   description: ''
   trigger:
   - entity_id: alarm_control_panel.alarme
@@ -205,24 +195,12 @@
       message: Alarme activé (Mode nuit)
     service: notify.telegram
 - id: '1590285699676'
-  alias: '[Notification] When alarm is disabled'
+  alias: '[Notification] Alarme désactivée'
   description: ''
   trigger:
   - entity_id: alarm_control_panel.alarme
     platform: state
     to: disarmed
-  condition: []
-  action:
-  - data:
-      message: Alarme désactivé
-    service: notify.telegram
-- id: '1590285700368'
-  alias: '[Notification] When alarm is disabled'
-  description: ''
-  trigger:
-  - entity_id: alarm_control_panel.alarme
-    platform: state
-    to: disabled
   condition: []
   action:
   - data:
@@ -252,6 +230,9 @@
   - data: {}
     entity_id: switch.camera_sejour_motion_sensor
     service: switch.turn_on
+  - data: {}
+    entity_id: switch.camera_balcon_motion_sensor
+    service: switch.turn_on
 - id: '1590371659035'
   alias: Disable sensors
   description: ''
@@ -263,6 +244,9 @@
   action:
   - data: {}
     entity_id: switch.camera_sejour_motion_sensor
+    service: switch.turn_off
+  - data: {}
+    entity_id: switch.camera_balcon_motion_sensor
     service: switch.turn_off
 - id: '1590371910210'
   alias: Turn on alarm on occupancy off
@@ -277,7 +261,7 @@
     entity_id: alarm_control_panel.alarme
     service: alarm_control_panel.alarm_arm_away
 - id: '1592537708859'
-  alias: Turn off AC
+  alias: '[Temporary] Turn off AC'
   description: ''
   trigger:
   - at: 0:20
@@ -304,3 +288,19 @@
   - data:
       message: Vous avez reçu du courrier
     service: persistent_notification.create
+- id: '1594674041380'
+  alias: '[Notification] Mouvement camera balcon'
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.ip_camera_balcon_motion
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: Mouvement sur le balcon
+    service: notify.telegram
+  - data:
+      camera_name: balcon
+    service: shell_command.send_camera_snapshots

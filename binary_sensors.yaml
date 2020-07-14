@@ -18,3 +18,8 @@
   command: "python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_command.py sejour getMotionAlert"
   value_template: '{{ value == "2" }}'
   scan_interval: 2
+
+- platform: hikvision
+  host: !secret camera_balcon_ip
+  username: !secret camera_balcon_user
+  password: !secret camera_balcon_password
