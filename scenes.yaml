@@ -5,6 +5,10 @@
       friendly_name: Lampadaire
       state: 'off'
       supported_features: 41
+    light.lampe_bureau:
+      friendly_name: Lampe bureau
+      state: 'off'
+      supported_features: 41
     light.lampe_chevet_droite:
       effect_list:
       - colorloop
