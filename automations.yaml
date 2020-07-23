@@ -304,6 +304,22 @@
   - data:
       camera_name: balcon
     service: shell_command.send_camera_snapshots
+- id: '1595197177942'
+  alias: '[Notification] Mouvement camera séjour'
+  description: ''
+  trigger:
+  - entity_id: switch.camera_sejour_motion_sensor
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: Mouvement dans le séjour
+    service: notify.telegram
+  - data:
+      camera_name: sejour
+    service: shell_command.send_camera_snapshots
 - id: '1595505541002'
   alias: '[Notification] Mouvement camera bureau'
   description: ''
