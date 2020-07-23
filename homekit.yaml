@@ -13,6 +13,7 @@ filter:
     - binary_sensor.fenetre_chambre_contact
     - camera.camera_sejour
     - camera.camera_balcon
+    - camera.camera_bureau
 entity_config:
   camera.camera_sejour:
     stream_source: !secret camera_sejour_stream_source

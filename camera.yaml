@@ -12,3 +12,8 @@
   username: !secret camera_balcon_user
   password: !secret camera_balcon_password
   authentication: digest
+
+- platform: generic
+  name: camera_bureau
+  still_image_url: !secret camera_bureau_still_image
+  stream_source: !secret camera_bureau_stream_source

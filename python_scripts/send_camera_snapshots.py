@@ -6,6 +6,7 @@ python3 send_camera_snapshots.py CAMERA_NAME [NB_SNAPSHOTS]
 
 import sys
 from threading import Event
+from helpers.camera_utility import download_snapshot as download_snapshot_generic
 from helpers.foscam_utility import download_snapshot as download_snapshot_foscam
 from helpers.hikvision_utility import download_snapshot as download_snapshot_hikvision
 from helpers.telegram_utility import send_photos
@@ -40,12 +41,14 @@ camera_port = secrets[f'camera_{camera_name}_port']
 event = Event()
 photos = []
 for i in range(nb_snapshot):
-  snapshot_path = f'{SNAPSHOTS_PATH}/snapshot_{i}.jpg'
+  snapshot_path = f'{SNAPSHOTS_PATH}/snapshot_{camera_name}_{i}.jpg'
   if camera_type == 'foscam':
     download_snapshot_foscam(camera_ip, camera_port, camera_username, camera_password, snapshot_path)
   elif camera_type == 'hikvision':
     download_snapshot_hikvision(camera_ip, camera_port, camera_username, camera_password, snapshot_path)
-    
+  elif camera_type == 'generic':
+    download_snapshot_generic(camera_ip, camera_port, '/picture/1/current/', snapshot_path)
+
   photos.append(snapshot_path)
   event.wait(time_between_snapshot)
 

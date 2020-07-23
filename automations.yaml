@@ -304,3 +304,17 @@
   - data:
       camera_name: balcon
     service: shell_command.send_camera_snapshots
+- id: '1595505541002'
+  alias: '[Notification] Mouvement camera bureau'
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: motion_camera_bureau
+  condition: []
+  action:
+  - data:
+      message: Mouvement dans le bureau
+    service: notify.telegram
+  - data:
+      camera_name: bureau
+    service: shell_command.send_camera_snapshots
