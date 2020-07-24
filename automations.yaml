@@ -334,3 +334,30 @@
   - data:
       camera_name: bureau
     service: shell_command.send_camera_snapshots
+- id: '1595553550823'
+  alias: Auto clim on
+  description: ''
+  trigger:
+  - at: '10:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      hvac_mode: cool
+    entity_id: climate.climatisation
+    service: climate.set_hvac_mode
+  - data:
+      fan_mode: low
+    entity_id: climate.climatisation
+    service: climate.set_fan_mode
+- id: '1595553707817'
+  alias: Auto clim off
+  description: ''
+  trigger:
+  - at: '11:30'
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    entity_id: climate.climatisation
+    service: climate.turn_off
