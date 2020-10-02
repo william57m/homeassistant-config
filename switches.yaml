@@ -12,3 +12,12 @@
       command_state: "python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_command.py balcon getMotionSensor"
       value_template: '{{ value == "1" }}'
       friendly_name: Motion sensor camera balcon
+
+- platform: mqtt
+  name: "Ventilation salle de bain"
+  command_topic: "cmv/fanrestroom/set"
+  state_topic: "cmv/fanrestroom/get"
+  state_on: "on"
+  state_off: "off"
+  value_template: "{{ value_json.fan_restroom }}"
+  optimistic: false
