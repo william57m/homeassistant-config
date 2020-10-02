@@ -5,6 +5,7 @@ filter:
     - light.lumiere_salon
     - light.lampe_chevet_droite
     - light.lampe_chevet_gauche
+    - light.lumiere_chambre
     - light.lampe_bureau
     - climate.thermostat_salon_climate
     - climate.climatisation

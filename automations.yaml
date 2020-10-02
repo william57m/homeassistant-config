@@ -230,9 +230,6 @@
   - data: {}
     entity_id: switch.camera_sejour_motion_sensor
     service: switch.turn_on
-  - data: {}
-    entity_id: switch.camera_balcon_motion_sensor
-    service: switch.turn_on
 - id: '1590371659035'
   alias: Disable sensors
   description: ''
@@ -346,18 +343,41 @@
       hvac_mode: cool
     entity_id: climate.climatisation
     service: climate.set_hvac_mode
-  - data:
-      fan_mode: low
-    entity_id: climate.climatisation
-    service: climate.set_fan_mode
 - id: '1595553707817'
   alias: Auto clim off
   description: ''
   trigger:
-  - at: '11:30'
+  - at: '11:00'
     platform: time
   condition: []
   action:
   - data: {}
     entity_id: climate.climatisation
     service: climate.turn_off
+- id: '1595598768398'
+  alias: Auto light off
+  description: ''
+  trigger:
+  - at: '22:30'
+    platform: time
+  condition: []
+  action:
+  - scene: scene.tout_eteindre
+- id: '1595598882905'
+  alias: Auto light on
+  description: ''
+  trigger:
+  - at: '20:00'
+    platform: time
+  condition: []
+  action:
+  - brightness_pct: 100
+    device_id: 486d6ad978584ce39674ee4760664c91
+    domain: light
+    entity_id: light.lampadaire_ikea
+    type: turn_on
+  - brightness_pct: 100
+    device_id: ee405e7ef6d94b349f70029b47aea7d9
+    domain: light
+    entity_id: light.lampe_bureau
+    type: turn_on

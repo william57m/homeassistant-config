@@ -16,7 +16,7 @@ from helpers.config import SNAPSHOTS_PATH
 
 # Params
 nb_snapshot = 4
-time_between_snapshot = 1
+time_between_snapshot = 2
 
 # Get secrets
 secrets = get_secrets()
