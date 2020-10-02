@@ -16,7 +16,7 @@
 - platform: mqtt
   name: "Ventilation salle de bain"
   command_topic: "cmv/fanrestroom/set"
-  state_topic: "cmv/fanrestroom/get"
+  state_topic: "cmv/state/get"
   state_on: "on"
   state_off: "off"
   value_template: "{{ value_json.fan_restroom }}"
