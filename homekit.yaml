@@ -15,6 +15,7 @@ filter:
     - camera.camera_sejour
     - camera.camera_balcon
     - camera.camera_bureau
+    - switch.ventilation_salle_de_bain
 entity_config:
   camera.camera_sejour:
     stream_source: !secret camera_sejour_stream_source
