@@ -381,3 +381,21 @@
     domain: light
     entity_id: light.lampe_bureau
     type: turn_on
+- id: '1601670145906'
+  alias: Ventilation salle de bain
+  description: ''
+  trigger:
+  - above: '70'
+    entity_id: sensor.capteur_temp_sdb_humidity
+    platform: numeric_state
+  condition:
+  - condition: and
+    conditions:
+    - before: '22:00'
+      condition: time
+    - after: '6:00'
+      condition: time
+  action:
+  - data: {}
+    entity_id: switch.ventilation_salle_de_bain
+    service: switch.turn_on
