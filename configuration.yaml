@@ -19,8 +19,8 @@ panel_custom:
       name: World
 
 # Themes
-frontend:
-  themes: !include_dir_merge_named themes
+#frontend:
+#  themes: !include_dir_merge_named themes
 
 climate:
   platform: mqtt

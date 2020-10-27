@@ -37,27 +37,27 @@
       value_index: 0
       value_instance: 1
 - id: '1593440123149'
-  name: Cozy
+  name: Salon cozy
   entities:
     light.lampadaire_ikea:
       brightness: 187
       friendly_name: Lampadaire
-      state: 'on'
       supported_features: 41
+      state: 'on'
     light.lumiere_cuisine:
-      friendly_name: Lumière cuisine
       node_id: 4
-      state: 'off'
-      supported_features: 1
-      value_id: '72057594109853697'
       value_index: 0
       value_instance: 1
+      value_id: '72057594109853697'
+      friendly_name: Lumière cuisine
+      supported_features: 1
+      state: 'off'
     light.lumiere_salon:
       brightness: 44
-      friendly_name: Lumière salon
       node_id: 5
-      state: 'on'
-      supported_features: 1
-      value_id: '72057594126630913'
       value_index: 0
       value_instance: 1
+      value_id: '72057594126630913'
+      friendly_name: Lumière salon
+      supported_features: 1
+      state: 'on'
