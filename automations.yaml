@@ -60,8 +60,8 @@
   condition:
   - condition: and
     conditions:
-    - after: '20:00'
-      before: '23:59'
+    - after: '18:00'
+      before: 05:00
       condition: time
     - condition: state
       entity_id: input_boolean.occupancy
@@ -77,6 +77,7 @@
     domain: light
     entity_id: light.lumiere_salon
     type: turn_on
+  mode: single
 - id: '1588894249532'
   alias: '[Scan présence] Porte entrée fermé'
   description: ''
@@ -257,17 +258,6 @@
   - data: {}
     entity_id: alarm_control_panel.alarme
     service: alarm_control_panel.alarm_arm_away
-- id: '1592537708859'
-  alias: '[Temporary] Turn off AC'
-  description: ''
-  trigger:
-  - at: 0:20
-    platform: time
-  condition: []
-  action:
-  - data: {}
-    entity_id: climate.climatisation
-    service: climate.turn_off
 - id: '1594307563684'
   alias: '[Notification] Courrier'
   description: ''
@@ -355,7 +345,7 @@
     entity_id: climate.climatisation
     service: climate.turn_off
 - id: '1595598768398'
-  alias: Auto light off
+  alias: '[Simulation presence] Light off'
   description: ''
   trigger:
   - at: '22:30'
@@ -363,8 +353,9 @@
   condition: []
   action:
   - scene: scene.tout_eteindre
+  mode: single
 - id: '1595598882905'
-  alias: Auto light on
+  alias: '[Simulation presence] Light on'
   description: ''
   trigger:
   - at: '20:00'
@@ -381,6 +372,7 @@
     domain: light
     entity_id: light.lampe_bureau
     type: turn_on
+  mode: single
 - id: '1601670145906'
   alias: Ventilation salle de bain
   description: ''
@@ -393,9 +385,12 @@
     conditions:
     - before: '22:00'
       condition: time
-    - after: '6:00'
-      condition: time
+      after: '6:00'
+    - condition: state
+      entity_id: switch.ventilation_salle_de_bain
+      state: 'off'
   action:
   - data: {}
     entity_id: switch.ventilation_salle_de_bain
     service: switch.turn_on
+  mode: single
