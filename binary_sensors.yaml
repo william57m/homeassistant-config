@@ -23,3 +23,15 @@
   host: !secret camera_balcon_ip
   username: !secret camera_balcon_user
   password: !secret camera_balcon_password
+
+- platform: mqtt
+  name: camera_balcon_person
+  state_topic: "frigate/camera_balcon/person"
+  device_class: motion
+  availability_topic: "frigate/available"
+
+- platform: mqtt
+  name: camera_sejour_person
+  state_topic: "frigate/camera_sejour/person"
+  device_class: motion
+  availability_topic: "frigate/available"
