@@ -7,6 +7,12 @@ binary_sensor.mbp_william_status:
 binary_sensor.camera_sejour_motion_sensor:
   friendly_name: Mouvement caméra séjour
 
+binary_sensor.camera_balcon_person:
+  friendly_name: Mouvement caméra balcon (AI)
+
+binary_sensor.camera_sejour_person:
+  friendly_name: Mouvement caméra séjour (AI)
+
 camera.camera_sejour:
   friendly_name: Camera séjour
 

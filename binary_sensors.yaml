@@ -26,7 +26,7 @@
 
 - platform: mqtt
   name: camera_balcon_person
-  state_topic: "frigate/camera_balcon/person"
+  state_topic: "frigate/balcon/person"
   device_class: motion
   availability_topic: "frigate/available"
 

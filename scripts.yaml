@@ -3,3 +3,23 @@ lock_mbp_william:
   sequence:
   - data: {}
     service: shell_command.send_sleep_command_mac
+mode_nuit:
+  alias: Mode nuit
+  sequence:
+  - scene: scene.tout_eteindre
+  - device_id: 24d188485e314dc19a3cbc4d2760f0fc
+    domain: climate
+    entity_id: climate.thermostat_salon_climate
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  - service: alarm_control_panel.alarm_arm_night
+    data: {}
+    entity_id: alarm_control_panel.alarme
+  mode: single
+mode_jour:
+  alias: Mode jour
+  sequence:
+  - service: alarm_control_panel.alarm_disarm
+    data: {}
+    entity_id: alarm_control_panel.alarme
+  mode: single

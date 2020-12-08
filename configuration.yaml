@@ -88,6 +88,11 @@ withings:
   client_id: !secret withings_client_id
   client_secret: !secret withings_client_secret
 
+# Spotify
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
+
 # Telegram Settings
 telegram_bot:
   - platform: polling

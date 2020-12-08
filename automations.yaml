@@ -1,5 +1,5 @@
 - id: '1588533648578'
-  alias: '[Notification] Porte entrée ouverte'
+  alias: '[Alarme] Porte entrée ouverte'
   description: ''
   trigger:
   - device_id: cb834a7d240848d8a22d634f370ddc08
@@ -23,8 +23,9 @@
   - data:
       camera_name: sejour
     service: shell_command.send_camera_snapshots
+  mode: single
 - id: '1588553279361'
-  alias: '[Notification] Porte balcon ouverte'
+  alias: '[Alarme] Porte balcon ouverte'
   description: ''
   trigger:
   - device_id: 7ba2a5d9bee8499180cf9abe0161e8c1
@@ -48,6 +49,7 @@
   - data:
       camera_name: balcon
     service: shell_command.send_camera_snapshots
+  mode: single
 - id: '1588612500729'
   alias: '[Lumière] Porte entrée ouverte soir'
   description: ''
@@ -60,7 +62,7 @@
   condition:
   - condition: and
     conditions:
-    - after: '18:00'
+    - after: '16:00'
       before: 05:00
       condition: time
     - condition: state
@@ -393,4 +395,27 @@
   - data: {}
     entity_id: switch.ventilation_salle_de_bain
     service: switch.turn_on
+  mode: single
+- id: '1603999289566'
+  alias: '[Alarme] Fenetre chambre ouverte'
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 6cc1928e9ce04a3f93c49ec220d85ff7
+    entity_id: binary_sensor.fenetre_chambre_contact
+    domain: binary_sensor
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.alarme
+      state: armed_away
+    - condition: state
+      entity_id: alarm_control_panel.alarme
+      state: armed_night
+  action:
+  - data:
+      message: Fenêtre chambre ouverte
+    service: notify.telegram
   mode: single
