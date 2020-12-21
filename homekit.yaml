@@ -8,6 +8,7 @@ filter:
     - light.lumiere_chambre
     - light.lampe_bureau
     - climate.thermostat_salon_climate
+    - climate.thermostat_chambre_climate
     - climate.climatisation
     - binary_sensor.porte_entree_contact
     - binary_sensor.porte_balcon_contact
