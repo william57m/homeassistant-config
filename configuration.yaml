@@ -80,6 +80,7 @@ alarm_control_panel:
 shell_command:
   send_camera_snapshots: python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_snapshots.py {{camera_name}}
   send_camera_snapshot: python3 /home/homeassistant/.homeassistant/python_scripts/send_camera_snapshot.py {{camera_name}}
+  send_snapshot_from_pi: python3 /home/homeassistant/.homeassistant/python_scripts/send_snapshot_from_pi.py {{camera_name}}
   send_sleep_command_mac: python3 /home/homeassistant/.homeassistant/python_scripts/send_sleep_command_mac.py
   set_alarm_speaker: python3 /home/homeassistant/.homeassistant/python_scripts/set_alarm_speaker.py {{state}}
 
