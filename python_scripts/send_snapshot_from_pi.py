@@ -1,4 +1,5 @@
 import requests
+import sys
 
 from helpers.config import SNAPSHOTS_PATH
 from helpers.telegram_utility import send_photo
