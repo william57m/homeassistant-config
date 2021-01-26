@@ -6,15 +6,19 @@ lock_mbp_william:
 mode_nuit:
   alias: Mode nuit
   sequence:
-  - scene: scene.tout_eteindre
-  - device_id: 24d188485e314dc19a3cbc4d2760f0fc
-    domain: climate
-    entity_id: climate.thermostat_salon_climate
-    type: set_hvac_mode
-    hvac_mode: 'off'
+  - scene: scene.turn_off_all_lights
+  - scene: scene.turn_off_all_thermostats
+  - type: turn_off
+    device_id: 2596ea741f1999c33dbe6b7bc7526ca1
+    entity_id: switch.prise_courant_1_switch
+    domain: switch
   - service: alarm_control_panel.alarm_arm_night
     data: {}
     entity_id: alarm_control_panel.alarme
+  - service: mqtt.publish
+    data:
+      topic: zigbee2mqtt/Thermostat chambre/set
+      payload: '{"backlight_auto_dim": "on demand"}'
   mode: single
 mode_jour:
   alias: Mode réveil
@@ -22,4 +26,12 @@ mode_jour:
   - service: alarm_control_panel.alarm_disarm
     data: {}
     entity_id: alarm_control_panel.alarme
+  - type: turn_on
+    device_id: 2596ea741f1999c33dbe6b7bc7526ca1
+    entity_id: switch.prise_courant_1_switch
+    domain: switch
+  - service: mqtt.publish
+    data:
+      topic: zigbee2mqtt/Thermostat chambre/set
+      payload: '{"backlight_auto_dim": "sensing"}'
   mode: single

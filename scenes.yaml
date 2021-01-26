@@ -1,5 +1,5 @@
 - id: '1593440007085'
-  name: Tout éteindre
+  name: Turn off all lights
   entities:
     light.lampadaire_ikea:
       friendly_name: Lampadaire
@@ -37,10 +37,10 @@
       supported_features: 1
       state: 'off'
     light.lumiere_chambre:
-      node_id: 6
+      node_id: 8
       value_index: 0
       value_instance: 1
-      value_id: '72057594143408129'
+      value_id: '72057594176962561'
       friendly_name: Lumière chambre
       supported_features: 1
       state: 'off'
@@ -69,3 +69,55 @@
       friendly_name: Lumière salon
       supported_features: 1
       state: 'on'
+- id: '1608606246818'
+  name: Turn off all thermostats
+  entities:
+    climate.thermostat_salon_climate:
+      hvac_modes:
+      - 'off'
+      - auto
+      - heat
+      min_temp: 7
+      max_temp: 30
+      target_temp_step: 0.5
+      current_temperature: 21
+      temperature: 22
+      linkquality: 34
+      local_temperature: 21
+      occupied_heating_setpoint: 22
+      operation: idle
+      pi_heating_demand: 0
+      system_mode: 'off'
+      friendly_name: Thermostat salon
+      supported_features: 1
+      state: 'off'
+    climate.thermostat_chambre_climate:
+      hvac_modes:
+      - 'off'
+      - auto
+      - heat
+      min_temp: 7
+      max_temp: 30
+      target_temp_step: 0.5
+      current_temperature: 21.8
+      temperature: 20
+      energy: 0.13
+      linkquality: 105
+      local_temperature: 21.8
+      occupied_heating_setpoint: 20
+      operation: idle
+      pi_heating_demand: 0
+      system_mode: 'off'
+      friendly_name: Thermostat chambre climate
+      supported_features: 1
+      state: 'off'
+    lock.thermostat_chambre_keypad_lock:
+      energy: 0.13
+      linkquality: 105
+      local_temperature: 21.8
+      occupied_heating_setpoint: 20
+      operation: idle
+      pi_heating_demand: 0
+      system_mode: 'off'
+      friendly_name: Verrouillage thermostat salon
+      state: unlocked
