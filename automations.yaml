@@ -51,7 +51,7 @@
     service: shell_command.send_camera_snapshots
   mode: single
 - id: '1588612500729'
-  alias: '[Lumière] Porte entrée ouverte soir'
+  alias: Lumieres/Porte entree ouverte/Soir
   description: ''
   trigger:
   - device_id: cb834a7d240848d8a22d634f370ddc08
@@ -376,7 +376,7 @@
     type: turn_on
   mode: single
 - id: '1601670145906'
-  alias: Ventilation salle de bain
+  alias: Ventilation salle de bain/Humidite
   description: ''
   trigger:
   - above: '70'
@@ -468,4 +468,45 @@
   - service: shell_command.send_snapshot_from_pi
     data:
       camera_name: balcon
+  mode: single
+- id: '1611688069280'
+  alias: Thermostat chambre/Off/Fenetre chambre/Opened
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 6cc1928e9ce04a3f93c49ec220d85ff7
+    entity_id: binary_sensor.fenetre_chambre_contact
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: input_text.set_value
+    data:
+      entity_id: input_text.thermostat_chambre_state
+      value: '{{ states.climate.thermostat_chambre_climate.state }}'
+  - device_id: c5bb3c1d5d2bfda4a9042551341b4d70
+    domain: climate
+    entity_id: climate.thermostat_chambre_climate
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1611688200213'
+  alias: Thermostat chambre/Previous state/Fenetre chambre/Closed
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 6cc1928e9ce04a3f93c49ec220d85ff7
+    entity_id: binary_sensor.fenetre_chambre_contact
+    domain: binary_sensor
+  condition:
+  - condition: state
+    entity_id: input_text.thermostat_chambre_state
+    state: heat
+  action:
+  - device_id: c5bb3c1d5d2bfda4a9042551341b4d70
+    domain: climate
+    entity_id: climate.thermostat_chambre_climate
+    type: set_hvac_mode
+    hvac_mode: heat
   mode: single
